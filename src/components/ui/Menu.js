@@ -1,5 +1,4 @@
 import { PropTypes } from 'prop-types'
-import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem, Badge } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 
@@ -17,21 +16,30 @@ const Menu = ({ itemsInCart=[] }) => {
       	  	<Navbar.Collapse>
       	  	  	<Nav className='menu-links'>
                     <LinkContainer className='menu-link' to="/about">
-                        <NavItem eventKey={1} href="#">About</NavItem>
+                        <NavItem eventKey={1} href="#">
+                            About
+                        </NavItem>
                     </LinkContainer>
                     <LinkContainer className='menu-link' to="/items">
-                        <NavItem eventKey={2} href="#">Items</NavItem>
+                        <NavItem eventKey={2} href="#">
+                            Items
+                        </NavItem>
                     </LinkContainer>
                     <LinkContainer className='menu-link' to="/terms">
-                        <NavItem eventKey={3} href="#">Terms</NavItem>
+                        <NavItem eventKey={3} href="#">
+                            Terms
+                        </NavItem>
                     </LinkContainer>
-                    <LinkContainer className='menu-link' to="/Contacts">
-                        <NavItem eventKey={4} href="#">Contacts</NavItem>
+                    <LinkContainer className='menu-link' to="/contacts">
+                        <NavItem eventKey={4} href="#">
+                            Contacts
+                        </NavItem>
                     </LinkContainer>
-      	  	  	</Nav>
-      	  	  	<Nav pullRight>
+                </Nav>
+                <Nav pullRight>
                     <LinkContainer className='menu-link' to="/cart">
-                        <NavItem eventKey={5} href="#">Cart
+                        <NavItem eventKey={5} href="#">
+                            Cart
                             { 
                                 quantityItems > 0
                                 ? <Badge className='cart__badge'>{ quantityItems }</Badge> 
@@ -39,7 +47,7 @@ const Menu = ({ itemsInCart=[] }) => {
                             }
                         </NavItem>
                     </LinkContainer>
-      	  	  	</Nav>
+                </Nav>
       	  	</Navbar.Collapse>
       	</Navbar> 
     )

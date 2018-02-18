@@ -1,0 +1,48 @@
+@import "../styles/palette.less";
+
+.Cart {    
+    padding: 16px;
+    background-color: @card-background-color;
+    max-width: 800px;
+    margin: auto;
+
+    .btn-del {
+    	cursor: pointer;
+    }
+
+    .cart__table { 
+    	width: 100%; 
+        
+        th, td { 
+            text-align: center; 
+            padding: 0.25em;
+        }
+
+        .item__name {
+            width: 40%;
+        }
+
+        .item__price, .item__quantity, .item__summ {
+            width: 20%;
+        }
+
+        .total__name, .total__items, .total__summ { 
+	       text-align: center; 
+	       font-weight: bold;
+	       padding: 0.25em;
+	       border-top: 1px solid @divider-color;
+	   }
+    }
+
+
+    .cart__buttons { 
+        text-align: right; 
+        padding: 0.25em;
+    }
+}
+
+.Cart__empty {
+	padding: 16px;
+	//background-color: none;
+	text-align: center;
+}

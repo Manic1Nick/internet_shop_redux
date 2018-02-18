@@ -1,0 +1,30 @@
+@import "../styles/palette.less";
+
+.Item {
+    padding: 16px;
+    background-color: lighten(@background-color, 4%);
+	display: flex;
+    flex-wrap: wrap;
+
+    .item__data {
+    	flex: 1 auto;
+        min-width: 100px;
+
+    	.btn-buy {
+    		cursor: pointer;    	
+    	}
+    }
+
+    .item__pics {
+    	flex: 1 auto;
+
+    	.item__pic {
+
+    		img {
+    			width: auto;
+    			max-height: 300px;
+    			margin: auto;
+    		}
+    	}
+    }
+}

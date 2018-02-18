@@ -1,4 +1,5 @@
 import { PropTypes } from 'prop-types'
+import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem, Badge } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 

@@ -66,6 +66,20 @@ export const closeModal = () => ({
     type: C.CLOSE_MODAL
 })
 
+export const addFilter = (filter) => ({
+    type: C.ADD_FILTER,
+    payload: filter
+})
+
+export const deleteFilter = (key) => ({
+    type: C.DELETE_FILTER,
+    payload: key
+})
+
+export const clearFilter = () => ({
+    type: C.CLEAR_FILTER
+})
+
 export const changeStock = (item, diff) => ({
     type: C.CHANGE_STOCK,
     payload: { item, diff }

@@ -2,47 +2,338 @@
 	"stock": [
 		{
 			"id": 1,
-			"name": "Notebook hp",
-			"brand": "HP",
-			"model": "6110p",
-			"group": "notes",
-			"picture": "",
-			"condition": 2,
-			"remarks": "without hard-drive",
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Tiger",
+			"condition": "new",
+			"size": 41,
+			"remarks": "",
 			"price": 10,
-			"description": "Old business notebook",
+			"preview": "pics/sandals/001-pre.jpg",
 			"pics": [
-				"pics/nx6110_1.jpg",
-				"pics/nx6110_2.jpg",
-				"pics/nx6110_3.jpg",
-				"pics/nx6110_4.jpg"
+				"pics/sandals/001-1.jpg",
+				"pics/sandals/001-2.jpg"
 			],
-			"inStock": 2
-		},{
-			"id": 2,
-			"name": "Mouse Genius",
-			"brand": "Genius",
-			"model": "111",
-			"group": "mouses",
-			"picture": "",
-			"condition": 2,
-			"remarks": "usable",
-			"price": 2,
-			"description": "Old mouse",
-			"pics" : [],
 			"inStock": 1
 		},{
-			"id": 3,
-			"name": "Smartphone Asus P526",
-			"brand": "Asus",
-			"model": "P526",
-			"group": "smartphones",
-			"picture": "",
-			"condition": 3,
-			"remarks": "with cosmetic deffects",
+			"id": 2,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Black Diamond",
+			"condition": "new",
+			"size": 43,
+			"remarks": "",
 			"price": 15,
-			"description": "Old smartphone",
-			"pics" : [],
+			"preview": "pics/sandals/002-pre.jpg",
+			"pics": [
+				"pics/sandals/002-1.jpg",
+				"pics/sandals/002-2.jpg"
+			],
+			"inStock": 3
+		},{
+			"id": 3,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Spring",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/003-pre.jpg",
+			"pics": [
+				"pics/sandals/003-1.jpg",
+				"pics/sandals/003-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 4,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Queen",
+			"condition": "new",
+			"size": 39,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/004-pre.jpg",
+			"pics": [
+				"pics/sandals/004-1.jpg",
+				"pics/sandals/004-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 5,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Beauty",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/005-pre.jpg",
+			"pics": [
+				"pics/sandals/005-1.jpg",
+				"pics/sandals/005-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 6,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Flex",
+			"condition": "new",
+			"size": 38,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/006-pre.jpg",
+			"pics": [
+				"pics/sandals/006-1.jpg",
+				"pics/sandals/006-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 7,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Elegant",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/007-pre.jpg",
+			"pics": [
+				"pics/sandals/007-1.jpg",
+				"pics/sandals/007-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 8,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Yellow Sprint",
+			"condition": "new",
+			"size": 38,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/008-pre.jpg",
+			"pics": [
+				"pics/sandals/008-1.jpg",
+				"pics/sandals/008-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 9,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Violet",
+			"condition": "new",
+			"size": 41,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/009-pre.jpg",
+			"pics": [
+				"pics/sandals/009-1.jpg",
+				"pics/sandals/009-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 10,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Leo",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/010-pre.jpg",
+			"pics": [
+				"pics/sandals/010-1.jpg",
+				"pics/sandals/010-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 11,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Strong",
+			"condition": "new",
+			"size": 41,
+			"remarks": "",
+			"price": 10,
+			"preview": "pics/sandals/011-pre.jpg",
+			"pics": [
+				"pics/sandals/011-1.jpg",
+				"pics/sandals/011-2.jpg"
+			],
+			"inStock": 1
+		},{
+			"id": 12,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Easy",
+			"condition": "new",
+			"size": 43,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/012-pre.jpg",
+			"pics": [
+				"pics/sandals/012-1.jpg",
+				"pics/sandals/012-2.jpg"
+			],
+			"inStock": 3
+		},{
+			"id": 13,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Flip-Flop",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/013-pre.jpg",
+			"pics": [
+				"pics/sandals/013-1.jpg",
+				"pics/sandals/013-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 14,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Summer Provance",
+			"condition": "new",
+			"size": 39,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/014-pre.jpg",
+			"pics": [
+				"pics/sandals/014-1.jpg",
+				"pics/sandals/014-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 15,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Young",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/015-pre.jpg",
+			"pics": [
+				"pics/sandals/015-1.jpg",
+				"pics/sandals/015-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 16,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Stars",
+			"condition": "new",
+			"size": 38,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/016-pre.jpg",
+			"pics": [
+				"pics/sandals/016-1.jpg",
+				"pics/sandals/016-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 17,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Blue Rose",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/017-pre.jpg",
+			"pics": [
+				"pics/sandals/017-1.jpg",
+				"pics/sandals/017-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 18,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Yellow Strong",
+			"condition": "new",
+			"size": 38,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/018-pre.jpg",
+			"pics": [
+				"pics/sandals/018-1.jpg",
+				"pics/sandals/018-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 19,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Silver Dream",
+			"condition": "new",
+			"size": 41,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/019-pre.jpg",
+			"pics": [
+				"pics/sandals/019-1.jpg",
+				"pics/sandals/019-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 20,
+			"group": "sandals",
+			"season": "summer",
+			"brand": "Quelle",
+			"name": "Sea Breeze",
+			"condition": "new",
+			"size": 40,
+			"remarks": "",
+			"price": 15,
+			"preview": "pics/sandals/020-pre.jpg",
+			"pics": [
+				"pics/sandals/020-1.jpg",
+				"pics/sandals/020-2.jpg"
+			],
 			"inStock": 1
 		}
 	],
@@ -51,6 +342,7 @@
 	"modals": {
 		"confirmCheckoutOpening": false
 	},
+	"filters": {},
 	"sendingService": false,
 	"orders": []
 }

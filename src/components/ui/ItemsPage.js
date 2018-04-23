@@ -1,13 +1,16 @@
 import { PropTypes } from 'prop-types'
 import { Route } from 'react-router-dom'
+import { Well, Button } from 'react-bootstrap'
 
-import ItemPreview from './ItemPreview'
 import Item from './Item'
+import ItemsGrid from './ItemsGrid'
+import ItemsFilter from './ItemsFilter'
 import ModalConfirmCheckout from './ModalConfirmCheckout'
+
 import '../../styles/ItemsPage.less'
 
 const ItemsPage = (props) => {
-
+	
 	const {
 		itemsInStock=[],
 		itemsInCart=[],
@@ -19,50 +22,66 @@ const ItemsPage = (props) => {
 		decrItem=f=>f,
 		deleteItem=f=>f,
 		openModal=f=>f,
-		closeModal=f=>f
+		closeModal=f=>f,
+		filter={},
+		addFilter=f=>f,
+		deleteFilter=f=>f,
+		clearFilter=f=>f
 	} = props
-
+	
 	if (itemsInCart.length === 0 && modalOpening) closeModal()
-
-	const onBuyItem= (item) => { 
+	
+	const onBuyItem = (item) => { 
 		buyItem(item)
 		openModal()
 	}
-
+	
 	const onCheckout = () => {
 		closeModal()
 		history.push(`/checkout`)
 	}
-
+	
 	const onOpenItem = (itemId) => {
-		closeModal()
+		if (modalOpening) closeModal()
 		history.push(`/items/${itemId}`)
+	}
+	
+	const onChangeFilter = (filter) => {
+		addFilter(filter)
+	}
+
+	const onDeleteFilter = (key) => {
+		deleteFilter(key)
+	}
+
+	const onClearFilter = () => {
+		clearFilter()
 	}
 
 	return (
 		<div className='ItemsPage'>
-			<ul className='items'>
-			{
-				itemsInStock.map((item, index) => 
-					<li key={index}>
-						<ItemPreview 								
-							item={item}
-							selected={item.id === selectedItem.id}
-							exhausted={item.inStock === 0}
-							openItem={ () => history.push(`/items/${item.id}`) }
-						/>
-					</li>
-				)
-			}
-			</ul>
-
-			<div className='item-container'>
+			<ItemsFilter 
+				filter={ filter }
+				itemsInStock={ itemsInStock } 
+				onFilter={ onChangeFilter } 
+				deleteFilter={ onDeleteFilter }
+				clearFilter={ onClearFilter } 
+			/>
 			{
 				selectedItem.id 
-					? <Item currentItem={ selectedItem } onBuyItem={ onBuyItem } />
-					: null		
+			? 
+				<Item 
+					currentItem={ selectedItem } 
+					buyItem={ onBuyItem } 
+				/> 
+			: 
+				<ItemsGrid 
+					items={ itemsInStock } 
+					buyItem={ onBuyItem } 
+					openItem={ onOpenItem }
+					filter={ filter }
+				/>
 			}
-			</div>
 
 			<ModalConfirmCheckout 
 				open={ modalOpening }
@@ -90,7 +109,11 @@ ItemsPage.propTypes = {
 	decrItem: PropTypes.func, 
 	deleteItem: PropTypes.func,
 	openModal: PropTypes.func,
-	closeModal: PropTypes.func
+	closeModal: PropTypes.func,
+	filter: PropTypes.object,
+	addFilter: PropTypes.func,
+	deleteFilter: PropTypes.func,
+	clearFilter: PropTypes.func
 }
 
 export default ItemsPage

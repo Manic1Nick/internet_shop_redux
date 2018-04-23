@@ -72,6 +72,27 @@ export const confirmCheckoutOpening = (state = false, action) => {
 	}
 }
 
+export const filters = (state = {}, action) => {
+
+	let newFilters = Object.assign({}, state)
+
+	switch (action.type) {
+		case C.ADD_FILTER:
+			newFilters = Object.assign(newFilters, action.payload)
+			return newFilters
+
+		case C.DELETE_FILTER:
+			delete newFilters[action.payload]
+			return newFilters
+
+		case C.CLEAR_FILTER:
+			return {}
+
+		default:
+      		return state
+	}
+}
+
 export const sendingService = (state = false, action) => {
 
 	switch (action.type) {
@@ -127,6 +148,7 @@ export default combineReducers({
 	modals: combineReducers({
 		confirmCheckoutOpening
 	}),
+	filters,
 	sendingService,
 	orders
 })

@@ -8,7 +8,10 @@ import {
 	deleteItemFromCart, 
 	deleteAllItemsFromCart, 
 	openModal,
-	closeModal
+	closeModal,
+	addFilter,
+	deleteFilter,
+	clearFilter
 } from '../../actions'
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,7 +20,8 @@ const mapStateToProps = (state, ownProps) => {
         itemsInCart: state.cart,
         history: ownProps.history,
         selectedItem: state.stock.find(item => item.id === +ownProps.match.params.id),
-        modalOpening: state.modals.confirmCheckoutOpening
+		modalOpening: state.modals.confirmCheckoutOpening,
+		filter: state.filters
     }
 }
 
@@ -28,7 +32,10 @@ const mapDispatchToProps = (dispatch) => {
 		decrItem: action(decreaseItemInCart, dispatch),
 		deleteItem: action(deleteItemFromCart, dispatch),
 		openModal: action(openModal, dispatch),
-		closeModal: action(closeModal, dispatch)
+		closeModal: action(closeModal, dispatch),
+		addFilter: action(addFilter, dispatch),
+		deleteFilter: action(deleteFilter, dispatch),
+		clearFilter: action(clearFilter, dispatch)
 	}
 }
 

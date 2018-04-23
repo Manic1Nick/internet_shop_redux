@@ -49,13 +49,11 @@ const CartPage = (props) => {
 			/>
 
 			<div className="cart__buttons">
-				<Button 
-					className="btn-clear"
+				<Button
 	    			onClick={ () => onClearCart() }
 	    		>Clear cart</Button>
 
-				<Button 
-					className="btn-checkout"
+				<Button
 	    			bsStyle="success" 
 	    			onClick={ () => history.push('/checkout') }
 	    			disabled={ quantityCart === 0 }

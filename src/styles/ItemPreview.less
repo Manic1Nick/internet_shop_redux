@@ -1,46 +1,68 @@
 @import "../styles/palette.less";
 
 .ItemPreview {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-top: 1px solid @divider-color;
-    //border-bottom: 1px solid @divider-color;
-    border-right: 1px solid @divider-color;
-    cursor: pointer;
+    width: 200px;
+    height: auto;
+    float: left;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: -webkit-box-shadow .3s;
+    transition: box-shadow .3s;
+    transition: box-shadow .3s, -webkit-box-shadow .3s;
+    background-color: #eaeaea;
 
-    &:hover {
-        background-color: lighten(@primary-color, 55%);
-    }
+    figure { 
+        width: 100%; 
+    
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 90%;
+            height: auto;
+            border-radius: 20px;
+            cursor: pointer;
 
-    &.selected {
-        border-right: none;
-        background-color: lighten(@background-color, 4%);
-        border-bottom-left-radius: 6px;
-        border-top-left-radius: 6px;
-
-        &:hover {
-            background-color: lighten(@primary-color, 55%);
+            opacity: 0.8;
+            -webkit-transform: scale(0.95);
+                    transform: scale(0.95);
+            -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: opacity 0.5s, -webkit-transform 0.5s;
+            transition: transform 0.5s, opacity 0.5s;
+            transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
         }
 
-        .name,
-        .price {
-            font-weight: bold;
+        img:hover {
+            opacity: 1;
+            -webkit-transform: scale(1.0);
+                    transform: scale(1.0);
+        }
+
+        figcaption {
+            text-align: center;
         }
     }
 
-    &.exhausted {
-        text-decoration: line-through;
+    .item-info { 
+        display: block;
+        width: 70%; 
+        float: left;
     }
+    .item-actions { 
+        position: absolute;
+        bottom: 0;
+        right: 0;    
+        width: 30%; 
+        text-align: right;
+        padding-right: 5%;
+        padding-bottom: 5%;
+    }
+}
 
-    .name {
-        font-size: 16px;
-        color: @text-color;
-    }
-
-    .price {
-        font-size: 14px;
-        color: @secondary-text-color;
-    }
+.ItemPreview:hover {            
+    -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);            
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }

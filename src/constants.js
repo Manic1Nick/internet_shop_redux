@@ -10,10 +10,17 @@ export default keyMirror({
 	MAKE_ORDER: null,
 	SEND_ORDER_DATA: null,
 	ADD_NEW_ORDER: null,
+
 	OPEN_MODAL: null,
 	CLOSE_MODAL: null,
+
+	ADD_FILTER: null,
+	DELETE_FILTER: null,
+	CLEAR_FILTER: null,
+
 	SENDING_SERVICE_ON: null,
 	SENDING_SERVICE_OFF: null,
+
 	ADD_ERROR: null,
 	CLEAR_ERROR: null,
 	CLEAR_ALL_ERRORS: null

@@ -16,6 +16,7 @@ const ItemsPage = (props) => {
 		itemsInCart=[],
 		selectedItem={}, 
 		history,
+		match,
 		modalOpening=false,
 		buyItem=f=>f,
 		incrItem=f=>f,
@@ -26,7 +27,7 @@ const ItemsPage = (props) => {
 		filter={},
 		addFilter=f=>f,
 		deleteFilter=f=>f,
-		clearFilter=f=>f
+		clearFiltersInGroup=f=>f
 	} = props
 	
 	if (itemsInCart.length === 0 && modalOpening) closeModal()
@@ -40,10 +41,15 @@ const ItemsPage = (props) => {
 		closeModal()
 		history.push(`/checkout`)
 	}
+
+	const onOpenGroup = () => {
+		let index = `${match.url}`.lastIndexOf('/')
+		history.push(`${match.url}`.substring(0, index))
+	}
 	
 	const onOpenItem = (itemId) => {
 		if (modalOpening) closeModal()
-		history.push(`/items/${itemId}`)
+		history.push(`${match.url}/${itemId}`)
 	}
 	
 	const onChangeFilter = (filter) => {
@@ -54,34 +60,39 @@ const ItemsPage = (props) => {
 		deleteFilter(key)
 	}
 
-	const onClearFilter = () => {
-		clearFilter()
+	const onClearFiltersInGroup = () => {
+		clearFiltersInGroup()
 	}
 
-	return (
-		<div className='ItemsPage'>
+	const renderItem = () => 
+		<div className='Item'>
+			<Button bsStyle="warning" onClick={ () => onOpenGroup() }>Return to group</Button>
+			<Item 
+				currentItem={ selectedItem } 
+				buyItem={ onBuyItem } 
+			/>
+		</div>
+
+	const renderItemsGrid = () => 
+		<div className='ItemsGrid'>
 			<ItemsFilter 
 				filter={ filter }
 				itemsInStock={ itemsInStock } 
 				onFilter={ onChangeFilter } 
 				deleteFilter={ onDeleteFilter }
-				clearFilter={ onClearFilter } 
+				clearFiltersInGroup={ onClearFiltersInGroup } 
 			/>
-			{
-				selectedItem.id 
-			? 
-				<Item 
-					currentItem={ selectedItem } 
-					buyItem={ onBuyItem } 
-				/> 
-			: 
-				<ItemsGrid 
-					items={ itemsInStock } 
-					buyItem={ onBuyItem } 
-					openItem={ onOpenItem }
-					filter={ filter }
-				/>
-			}
+			<ItemsGrid 
+				items={ itemsInStock } 
+				buyItem={ onBuyItem } 
+				openItem={ onOpenItem }
+				filter={ filter }
+			/>
+		</div>
+
+	return (
+		<div className='ItemsPage'>
+			{ selectedItem.id ? renderItem() : renderItemsGrid() }
 
 			<ModalConfirmCheckout 
 				open={ modalOpening }
@@ -102,6 +113,7 @@ ItemsPage.propTypes = {
     itemsInStock: PropTypes.array,
     itemsInCart: PropTypes.array,
     history: PropTypes.object,
+    match: PropTypes.object,
     selectedItem: PropTypes.object,
     modalOpening: PropTypes.bool,
     buyItem: PropTypes.func,
@@ -113,7 +125,7 @@ ItemsPage.propTypes = {
 	filter: PropTypes.object,
 	addFilter: PropTypes.func,
 	deleteFilter: PropTypes.func,
-	clearFilter: PropTypes.func
+	clearFiltersInGroup: PropTypes.func
 }
 
 export default ItemsPage

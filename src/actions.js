@@ -76,8 +76,8 @@ export const deleteFilter = (key) => ({
     payload: key
 })
 
-export const clearFilter = () => ({
-    type: C.CLEAR_FILTER
+export const clearFiltersInGroup = () => ({
+    type: C.CLEAR_FILTERS_IN_GROUP
 })
 
 export const changeStock = (item, diff) => ({

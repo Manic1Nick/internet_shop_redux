@@ -59,7 +59,7 @@ class ListItemsInCart extends Component {
 								price={ item.price }
 								maxQuantity={ item.inStock + item.inCart }
 								quantity={ item.inCart }
-								onOpenItem={ () => openItem(item.id) }
+								onOpenItem={ () => openItem(item) }
 								onIncrItem={ () => checkIncrItem(item) }
 								onDecrItem={ () => checkDecrItem(item) }
 								onDeleteItem={ () => onDeleteItem(item) }

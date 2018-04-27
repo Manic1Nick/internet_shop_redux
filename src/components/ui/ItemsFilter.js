@@ -41,15 +41,17 @@ class ItemsFilter extends Component {
         this.props.deleteFilter(key)
     }
 
-    onClearFilter() {
-        this.props.clearFilter()
+    onClearFiltersInGroup() {
+        this.props.clearFiltersInGroup()
     }
 
     renderSplitButton(key, i) {
         const { filterData, filter } = this.state,
             values = Object.keys(filterData).length > 0 ? filterData[key] : []
 
-        let title = key, styleButton = 'default'
+        let title = key, 
+            styleButton = 'default', 
+            styleDisabled = title === 'group'
 
         if (filter[key]) {
             title = `${key}:${filter[key]}`
@@ -58,6 +60,7 @@ class ItemsFilter extends Component {
 
         return(
             <SplitButton
+                className='btn btn-filters'
                 bsStyle={styleButton}
                 title={title}
                 key={i}
@@ -72,8 +75,14 @@ class ItemsFilter extends Component {
                         >{ value }</MenuItem>
                     )
                 }
+
                 <MenuItem divider />
-                <MenuItem eventKey='100' onSelect={ () => this.onDeleteFilter([key]) }>clear</MenuItem>
+                <MenuItem 
+                    eventKey='100' 
+                    onSelect={ () => this.onDeleteFilter([key]) } 
+                    disabled={ styleDisabled }
+                >clear</MenuItem>
+
             </SplitButton>
         )
     }
@@ -88,7 +97,12 @@ class ItemsFilter extends Component {
                     filterKeys.map((key, i) => this.renderSplitButton(key, i))
                 }
                 </ButtonToolbar>
-                <Button className='btn-clear' onClick={ () => this.onClearFilter() }>clear all</Button>
+
+                <Button 
+                    className='btn btn-clear' 
+                    onClick={ () => this.onClearFiltersInGroup() }
+                >see all in group</Button>
+
 			</div>
 		)
     }

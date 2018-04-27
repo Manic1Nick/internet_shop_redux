@@ -2,27 +2,30 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 import CartPage from './containers/CartPage'
 import ShowErrors from './containers/ShowErrors'
+import ItemsGroupsPage from './containers/ItemsGroupsPage'
 import ItemsPage from './containers/ItemsPage'
 import CheckoutPage from './containers/CheckoutPage'
 import Menu from './containers/Menu'
+import WelcomePage from './ui/WelcomePage'
 import About from './ui/AboutPage'
 import Terms from './ui/TermsPage'
 import Contacts from './ui/ContactsPage'
 import OrderConfirmationPage from './ui/OrderConfirmationPage'
 
 export const App = () =>
-    <div className="app">
+    <div className="App">
         <ShowErrors />
         <Menu />
         <Switch> 
+            <Route exact path='/' component={WelcomePage} />
             <Route exact path='/about' component={About} />
-            <Route exact path='/' component={About} />
             <Route exact path='/terms' component={Terms} />
             <Route exact path='/contacts' component={Contacts} />
-            <Route path='/items' component={ItemsPageContainer} />
             <Route exact path='/cart' component={CartPage} />
             <Route exact path='/checkout' component={CheckoutPage} />
             <Route exact path='/confirmation' component={OrderConfirmationPage} />
+            <Route exact path='/items' component={ItemsGroupsPage} />
+            <Route path='/:group' component={ItemsPageContainer} />
             <Route path="/*" component={Whoops404} />
         </Switch>
     </div>
@@ -35,6 +38,6 @@ const Whoops404 = ({ location }) =>
 
 const ItemsPageContainer = () => 
     <Switch>
-        <Route exact path='/items' component={ItemsPage} />
-        <Route path='/items/:id' component={ItemsPage} />        
+        <Route exact path='/:group' component={ItemsPage} /> 
+        <Route path='/:group/:id' component={ItemsPage} /> 
     </Switch>

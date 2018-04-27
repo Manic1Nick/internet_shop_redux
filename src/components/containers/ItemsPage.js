@@ -11,7 +11,7 @@ import {
 	closeModal,
 	addFilter,
 	deleteFilter,
-	clearFilter
+	clearFiltersInGroup
 } from '../../actions'
 
 const mapStateToProps = (state, ownProps) => {
@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
 		closeModal: action(closeModal, dispatch),
 		addFilter: action(addFilter, dispatch),
 		deleteFilter: action(deleteFilter, dispatch),
-		clearFilter: action(clearFilter, dispatch)
+		clearFiltersInGroup: action(clearFiltersInGroup, dispatch)
 	}
 }
 

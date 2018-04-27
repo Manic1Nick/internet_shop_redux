@@ -344,5 +344,6 @@
 	},
 	"filters": {},
 	"sendingService": false,
-	"orders": []
+	"orders": [],
+	"groups": [ "sandals", "t-shorts" ]
 }

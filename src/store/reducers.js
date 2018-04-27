@@ -1,6 +1,5 @@
 import C from '../constants'
 import { combineReducers } from 'redux'
-import emailjs from 'emailjs-com'
 
 export const cart = (state = [], action) => {
 
@@ -85,8 +84,8 @@ export const filters = (state = {}, action) => {
 			delete newFilters[action.payload]
 			return newFilters
 
-		case C.CLEAR_FILTER:
-			return {}
+		case C.CLEAR_FILTERS_IN_GROUP:
+			return { 'group': newFilters['group'] }
 
 		default:
       		return state
@@ -124,6 +123,14 @@ export const orders = (state = [], action) => {
 	}	
 }
 
+export const groups = (state = [], action) => {
+
+	switch (action.type) {
+		default:
+			return state
+	}	
+}
+
 export const errors = (state = [], action) => {
 
 	switch (action.type) {
@@ -150,5 +157,6 @@ export default combineReducers({
 	}),
 	filters,
 	sendingService,
-	orders
+	orders,
+	groups
 })

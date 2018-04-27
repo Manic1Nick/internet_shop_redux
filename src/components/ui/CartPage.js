@@ -32,8 +32,8 @@ const CartPage = (props) => {
 			clearCart(itemsInCart)
 	}
 
-	const onOpenItem = itemId => {
-		history.push(`/items/${itemId}`)
+	const onOpenItem = (item) => {
+		history.push(`/${item.group}/${item.id}`)
 	}
 
 	return (

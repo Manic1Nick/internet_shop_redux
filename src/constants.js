@@ -16,7 +16,9 @@ export default keyMirror({
 
 	ADD_FILTER: null,
 	DELETE_FILTER: null,
-	CLEAR_FILTER: null,
+	CLEAR_FILTERS_IN_GROUP: null,
+
+	SELECT_GROUP: null,
 
 	SENDING_SERVICE_ON: null,
 	SENDING_SERVICE_OFF: null,

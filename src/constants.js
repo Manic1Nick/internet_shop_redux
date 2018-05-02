@@ -11,15 +11,6 @@ export default keyMirror({
 	SEND_ORDER_DATA: null,
 	ADD_NEW_ORDER: null,
 
-	OPEN_MODAL: null,
-	CLOSE_MODAL: null,
-
-	ADD_FILTER: null,
-	DELETE_FILTER: null,
-	CLEAR_FILTERS_IN_GROUP: null,
-
-	SELECT_GROUP: null,
-
 	SENDING_SERVICE_ON: null,
 	SENDING_SERVICE_OFF: null,
 

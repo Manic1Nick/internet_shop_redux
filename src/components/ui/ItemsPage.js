@@ -1,4 +1,5 @@
 import { PropTypes } from 'prop-types'
+import { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { Well, Button } from 'react-bootstrap'
 
@@ -6,126 +7,166 @@ import Item from './Item'
 import ItemsGrid from './ItemsGrid'
 import ItemsFilter from './ItemsFilter'
 import ModalConfirmCheckout from './ModalConfirmCheckout'
+import FilterUtil from '../util/FilterUtil'
 
 import '../../styles/ItemsPage.less'
 
-const ItemsPage = (props) => {
-	
-	const {
-		itemsInStock=[],
-		itemsInCart=[],
-		selectedItem={}, 
-		history,
-		match,
-		modalOpening=false,
-		buyItem=f=>f,
-		incrItem=f=>f,
-		decrItem=f=>f,
-		deleteItem=f=>f,
-		openModal=f=>f,
-		closeModal=f=>f,
-		filter={},
-		addFilter=f=>f,
-		deleteFilter=f=>f,
-		clearFiltersInGroup=f=>f
-	} = props
-	
-	if (itemsInCart.length === 0 && modalOpening) closeModal()
-	
-	const onBuyItem = (item) => { 
-		buyItem(item)
-		openModal()
-	}
-	
-	const onCheckout = () => {
-		closeModal()
-		history.push(`/checkout`)
-	}
+class ItemsPage extends Component {
 
-	const onOpenGroup = () => {
-		let index = `${match.url}`.lastIndexOf('/')
-		history.push(`${match.url}`.substring(0, index))
-	}
+    constructor(props) {
+        super(props)
+		this.state = {
+            filter: { 'group': props.match.params.group },
+            modalConfirmCheckoutOpening: false
+		}
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.itemsInCart.length === 0 
+                && this.state.modalConfirmCheckoutOpening) {
+            this.closeModalConfirmCheckout()
+        }
+    }
+
+    onChangeFilter(addingFilter) {
+        let { filter } = this.state,
+            newFilter = Object.assign(filter, addingFilter)
+        this.setState({ filter: newFilter })
+    }
+    
+    onDeleteFilter(key) {
+        let { filter } = this.state
+        delete filter[key]
+        this.setState({ filter })
+    }
+
+    onClearFiltersInGroup() {
+        let { filter } = this.state,
+            newFilter = { 'group': filter['group'] }
+        this.setState({ filter: newFilter })
+    }
 	
-	const onOpenItem = (itemId) => {
-		if (modalOpening) closeModal()
-		history.push(`${match.url}/${itemId}`)
+	onBuyItem = (item) => { 
+        console.log('buy', item.id)
+		this.props.buyItem(item)
+		this.openModalConfirmCheckout()
 	}
 	
-	const onChangeFilter = (filter) => {
-		addFilter(filter)
+	onCheckout = () => {
+		this.closeModalConfirmCheckout()
+		this.props.history.push(`/checkout`)
 	}
 
-	const onDeleteFilter = (key) => {
-		deleteFilter(key)
+	onOpenGroup = () => {
+        const { history, match } = this.props
+		history.push(`/${match.params.group}`)
 	}
-
-	const onClearFiltersInGroup = () => {
-		clearFiltersInGroup()
+	
+	onOpenItem = (item) => {
+        const { history, match } = this.props
+		if (this.state.modalConfirmCheckoutOpening) this.closeModalConfirmCheckout()
+		history.push(`${match.url}/${item.id}`)
 	}
+    
+    openModalConfirmCheckout() {
+        this.setState({ modalConfirmCheckoutOpening: true })
+    }
 
-	const renderItem = () => 
-		<div className='Item'>
-			<Button bsStyle="warning" onClick={ () => onOpenGroup() }>Return to group</Button>
-			<Item 
-				currentItem={ selectedItem } 
-				buyItem={ onBuyItem } 
-			/>
-		</div>
+    closeModalConfirmCheckout() {
+        this.setState({ modalConfirmCheckoutOpening: false })
+    }
 
-	const renderItemsGrid = () => 
-		<div className='ItemsGrid'>
-			<ItemsFilter 
-				filter={ filter }
-				itemsInStock={ itemsInStock } 
-				onFilter={ onChangeFilter } 
-				deleteFilter={ onDeleteFilter }
-				clearFiltersInGroup={ onClearFiltersInGroup } 
-			/>
-			<ItemsGrid 
-				items={ itemsInStock } 
-				buyItem={ onBuyItem } 
-				openItem={ onOpenItem }
-				filter={ filter }
-			/>
-		</div>
+	renderItem = (id) => {
+        const { itemsInStock=[] } = this.props,
+            currentItem = itemsInStock.find(item => item.id === id)
 
-	return (
-		<div className='ItemsPage'>
-			{ selectedItem.id ? renderItem() : renderItemsGrid() }
+        return(
+            <div className='Item'>
+                <Button bsStyle="warning" onClick={ () => this.onOpenGroup() }>Return to group</Button>
+                <Item 
+                    currentItem={ currentItem } 
+                    buyItem={ this.onBuyItem } 
+                />
+            </div>
+        )
+    }
 
-			<ModalConfirmCheckout 
-				open={ modalOpening }
-				itemsInCart={ itemsInCart }
-				history={ history }
-				incrItem={ incrItem }
-				decrItem={ decrItem }
-				deleteItem={ deleteItem }
-				closeModal={ closeModal } 
-				onCheckout={ onCheckout }
-				openItem={ onOpenItem }
-			/>
-		</div>
-	)
+	renderItemsGrid = () => {
+        const 
+            { filter } = this.state,
+            { itemsInStock=[], filterKeys={} } = this.props,
+            filteredItems = FilterUtil.filterItems(itemsInStock, filter)
+
+        return(
+            <div className='ItemsGrid'>
+                <ItemsFilter 
+                    activeFilter={ filter }
+                    filterKeys={ filterKeys }
+                    filteredItems={ filteredItems } 
+                    updateFilter={ this.onChangeFilter.bind(this) } 
+                    deleteFilter={ this.onDeleteFilter.bind(this) }
+                    clearFiltersInGroup={ this.onClearFiltersInGroup.bind(this) } 
+                />
+                {
+                    filteredItems.length > 0
+                ?
+                    <ItemsGrid 
+                        items={ filteredItems } 
+                        buyItem={ this.onBuyItem } 
+                        openItem={ this.onOpenItem }
+                    />				
+                :
+                    <div className='items-no-found'>
+                        <p>There are no items in our shop by your request...</p>
+                    </div>
+                }
+            </div>
+        )
+    }
+
+    render() {
+
+        const {
+            itemsInCart=[],
+            match,
+            incrItem=f=>f,
+            decrItem=f=>f,
+            deleteItem=f=>f,
+        } = this.props
+
+        const { modalConfirmCheckoutOpening } = this.state
+
+        return (
+            <div className='ItemsPage'>
+                { 
+                    match.params.id 
+                ? 
+                    this.renderItem(parseInt(match.params.id)) 
+                : 
+                    this.renderItemsGrid() 
+                }
+    
+                <ModalConfirmCheckout 
+                    open={ modalConfirmCheckoutOpening }
+                    itemsInCart={ itemsInCart }
+                    incrItem={ incrItem }
+                    decrItem={ decrItem }
+                    deleteItem={ deleteItem }
+                    closeModal={ this.closeModalConfirmCheckout.bind(this) } 
+                    onCheckout={ this.onCheckout }
+                    openItem={ this.onOpenItem }
+                />
+            </div>
+        )
+    }
 }
 
 ItemsPage.propTypes = {
-    itemsInStock: PropTypes.array,
-    itemsInCart: PropTypes.array,
+    filterKeys: PropTypes.object,
+    intemsInStock: PropTypes.array,
+    intemsInCart: PropTypes.array,
     history: PropTypes.object,
-    match: PropTypes.object,
-    selectedItem: PropTypes.object,
-    modalOpening: PropTypes.bool,
-    buyItem: PropTypes.func,
-    incrItem: PropTypes.func, 
-	decrItem: PropTypes.func, 
-	deleteItem: PropTypes.func,
-	openModal: PropTypes.func,
-	closeModal: PropTypes.func,
-	filter: PropTypes.object,
-	addFilter: PropTypes.func,
-	deleteFilter: PropTypes.func,
-	clearFiltersInGroup: PropTypes.func
+    match: PropTypes.object
 }
 
 export default ItemsPage

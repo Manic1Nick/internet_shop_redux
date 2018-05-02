@@ -4,59 +4,48 @@ import { Route } from 'react-router-dom'
 import { ButtonToolbar, SplitButton, MenuItem, Button } from 'react-bootstrap'
 
 import '../../styles/ItemsFilter.less'
+import FilterUtil from '../util/FilterUtil'
 
 class ItemsFilter extends Component {
 
 	constructor(props) {
 		super(props)
 		this.state = {
-            filterKeys: [ 'group', 'brand', 'season', 'size', 'price' ],
-            filterData: {},
-			filter: props.filter
+            activeFilter: props.activeFilter
 		}
-    }
-    
-    componentDidMount() {
-        const { filterKeys } = this.state
-        
-        let filterData= {}, values = []
-        filterKeys.forEach(key => {
-            values = this._getValuesMenu(key)
-            Object.assign(filterData, { [key]: values })
-        })
-        this.setState({ filterData })
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.filter !== this.props.filter) {
-            this.setState({ filter: nextProps.filter })
+        if (nextProps.activeFilter !== this.props.activeFilter) {
+            this.setState({ 
+                activeFilter: nextProps.activeFilter
+            })
         }
-    }
-
-    onChangeFilter(addingFilter) {
-        this.props.onFilter(addingFilter)
-    }
-    
-    onDeleteFilter(key) {
-        this.props.deleteFilter(key)
-    }
-
-    onClearFiltersInGroup() {
-        this.props.clearFiltersInGroup()
     }
 
     renderSplitButton(key, i) {
-        const { filterData, filter } = this.state,
-            values = Object.keys(filterData).length > 0 ? filterData[key] : []
+        const { 
+            filterKeys,
+            filteredItems,
+            updateFilter, 
+            deleteFilter
+        } = this.props
+
+        const { activeFilter } = this.state,
+            isFilterGroup = key === 'group',
+            values = isFilterGroup 
+                ? Object.keys(filterKeys) 
+                : FilterUtil.getItemValues(filteredItems, key)
 
         let title = key, 
-            styleButton = 'default', 
-            styleDisabled = title === 'group'
+            styleButton = 'default'
 
-        if (filter[key]) {
-            title = `${key}:${filter[key]}`
+        if (activeFilter[key]) {
+            title = `${key}:${activeFilter[key]}`
             styleButton = 'warning'
         }
+
+        if (isFilterGroup) title += ` (${filteredItems.length})`
 
         return(
             <SplitButton
@@ -71,7 +60,8 @@ class ItemsFilter extends Component {
                         <MenuItem
                             key={index}
                             eventKey={index}
-                            onSelect={ () => this.onChangeFilter({ [key]: value }) }
+                            onSelect={ () => updateFilter({ [key]: value }) }
+                            //disabled={ !FilterUtil.validateValue(filteredItems, { [key]: value }) }
                         >{ value }</MenuItem>
                     )
                 }
@@ -79,47 +69,49 @@ class ItemsFilter extends Component {
                 <MenuItem divider />
                 <MenuItem 
                     eventKey='100' 
-                    onSelect={ () => this.onDeleteFilter([key]) } 
-                    disabled={ styleDisabled }
+                    onSelect={ () => deleteFilter([key]) } 
+                    disabled={ isFilterGroup }
                 >clear</MenuItem>
 
             </SplitButton>
         )
     }
 
-	render() {        
-        const { filterKeys, filter } = this.state
+	render() {
+        const { clearFiltersInGroup } = this.props,
+            filterButtons = this._generateFilterButtons()
 
 		return(
 			<div className='ItemsFilter'>
                 <ButtonToolbar>
                 { 
-                    filterKeys.map((key, i) => this.renderSplitButton(key, i))
+                    filterButtons.map((key, i) => this.renderSplitButton(key, i))
                 }
                 </ButtonToolbar>
 
                 <Button 
                     className='btn btn-clear' 
-                    onClick={ () => this.onClearFiltersInGroup() }
+                    onClick={ () => clearFiltersInGroup() }
                 >see all in group</Button>
 
 			</div>
 		)
     }
-    
-    _getValuesMenu(key) {
-        const { itemsInStock } = this.props
-        let values = []
 
-        itemsInStock.forEach(item => {
-            if (!values.includes(item[key])) values.push(item[key])
-        })
-        return values.sort()
+    _generateFilterButtons() {
+        const { filterKeys } = this.props,
+            { activeFilter } = this.state
+        
+        return [ 'group', ...filterKeys[activeFilter['group']] ]
     }
 }
 
 ItemsFilter.propTypes = {
-    itemsInStock: PropTypes.array
+    filterKeys: PropTypes.object,
+    filteredItems: PropTypes.array,
+    updateFilter: PropTypes.func, 
+    deleteFilter: PropTypes.func,
+    clearFiltersInGroup: PropTypes.func
 }
 
 export default ItemsFilter

@@ -1,4 +1,5 @@
 import ItemsPage from '../ui/ItemsPage'
+import FilterUtil from '../util/FilterUtil'
 import { bindActionCreators as action } from 'redux'
 import { connect } from 'react-redux'
 import { 
@@ -6,22 +7,17 @@ import {
 	increaseItemInCart, 
 	decreaseItemInCart, 
 	deleteItemFromCart, 
-	deleteAllItemsFromCart, 
-	openModal,
-	closeModal,
-	addFilter,
-	deleteFilter,
-	clearFiltersInGroup
+	deleteAllItemsFromCart
 } from '../../actions'
+
 
 const mapStateToProps = (state, ownProps) => {
     return {
     	itemsInStock: state.stock,
-        itemsInCart: state.cart,
-        history: ownProps.history,
-        selectedItem: state.stock.find(item => item.id === +ownProps.match.params.id),
-		modalOpening: state.modals.confirmCheckoutOpening,
-		filter: state.filters
+		itemsInCart: state.cart,
+		history: ownProps.history,
+		match: ownProps.match,
+		filterKeys: state.filterKeys
     }
 }
 
@@ -30,12 +26,7 @@ const mapDispatchToProps = (dispatch) => {
 		buyItem: action(addNewItemToCart, dispatch),
 		incrItem: action(increaseItemInCart, dispatch),
 		decrItem: action(decreaseItemInCart, dispatch),
-		deleteItem: action(deleteItemFromCart, dispatch),
-		openModal: action(openModal, dispatch),
-		closeModal: action(closeModal, dispatch),
-		addFilter: action(addFilter, dispatch),
-		deleteFilter: action(deleteFilter, dispatch),
-		clearFiltersInGroup: action(clearFiltersInGroup, dispatch)
+		deleteItem: action(deleteItemFromCart, dispatch)
 	}
 }
 

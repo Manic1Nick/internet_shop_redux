@@ -41,7 +41,7 @@
 			"condition": "new",
 			"size": 40,
 			"remarks": "",
-			"price": 15,
+			"price": 12,
 			"preview": "pics/sandals/003-pre.jpg",
 			"pics": [
 				"pics/sandals/003-1.jpg",
@@ -58,7 +58,7 @@
 			"condition": "new",
 			"size": 39,
 			"remarks": "",
-			"price": 15,
+			"price": 18,
 			"preview": "pics/sandals/004-pre.jpg",
 			"pics": [
 				"pics/sandals/004-1.jpg",
@@ -92,7 +92,7 @@
 			"condition": "new",
 			"size": 38,
 			"remarks": "",
-			"price": 15,
+			"price": 14,
 			"preview": "pics/sandals/006-pre.jpg",
 			"pics": [
 				"pics/sandals/006-1.jpg",
@@ -109,7 +109,7 @@
 			"condition": "new",
 			"size": 40,
 			"remarks": "",
-			"price": 15,
+			"price": 17,
 			"preview": "pics/sandals/007-pre.jpg",
 			"pics": [
 				"pics/sandals/007-1.jpg",
@@ -126,7 +126,7 @@
 			"condition": "new",
 			"size": 38,
 			"remarks": "",
-			"price": 15,
+			"price": 8,
 			"preview": "pics/sandals/008-pre.jpg",
 			"pics": [
 				"pics/sandals/008-1.jpg",
@@ -143,7 +143,7 @@
 			"condition": "new",
 			"size": 41,
 			"remarks": "",
-			"price": 15,
+			"price": 16,
 			"preview": "pics/sandals/009-pre.jpg",
 			"pics": [
 				"pics/sandals/009-1.jpg",
@@ -160,7 +160,7 @@
 			"condition": "new",
 			"size": 40,
 			"remarks": "",
-			"price": 15,
+			"price": 13,
 			"preview": "pics/sandals/010-pre.jpg",
 			"pics": [
 				"pics/sandals/010-1.jpg",
@@ -177,7 +177,7 @@
 			"condition": "new",
 			"size": 41,
 			"remarks": "",
-			"price": 10,
+			"price": 15,
 			"preview": "pics/sandals/011-pre.jpg",
 			"pics": [
 				"pics/sandals/011-1.jpg",
@@ -193,7 +193,7 @@
 			"condition": "new",
 			"size": 43,
 			"remarks": "",
-			"price": 15,
+			"price": 8,
 			"preview": "pics/sandals/012-pre.jpg",
 			"pics": [
 				"pics/sandals/012-1.jpg",
@@ -209,7 +209,7 @@
 			"condition": "new",
 			"size": 40,
 			"remarks": "",
-			"price": 15,
+			"price": 10,
 			"preview": "pics/sandals/013-pre.jpg",
 			"pics": [
 				"pics/sandals/013-1.jpg",
@@ -226,7 +226,7 @@
 			"condition": "new",
 			"size": 39,
 			"remarks": "",
-			"price": 15,
+			"price": 10,
 			"preview": "pics/sandals/014-pre.jpg",
 			"pics": [
 				"pics/sandals/014-1.jpg",
@@ -243,7 +243,7 @@
 			"condition": "new",
 			"size": 40,
 			"remarks": "",
-			"price": 15,
+			"price": 8,
 			"preview": "pics/sandals/015-pre.jpg",
 			"pics": [
 				"pics/sandals/015-1.jpg",
@@ -260,7 +260,7 @@
 			"condition": "new",
 			"size": 38,
 			"remarks": "",
-			"price": 15,
+			"price": 7,
 			"preview": "pics/sandals/016-pre.jpg",
 			"pics": [
 				"pics/sandals/016-1.jpg",
@@ -277,7 +277,7 @@
 			"condition": "new",
 			"size": 40,
 			"remarks": "",
-			"price": 15,
+			"price": 14,
 			"preview": "pics/sandals/017-pre.jpg",
 			"pics": [
 				"pics/sandals/017-1.jpg",
@@ -311,7 +311,7 @@
 			"condition": "new",
 			"size": 41,
 			"remarks": "",
-			"price": 15,
+			"price": 14,
 			"preview": "pics/sandals/019-pre.jpg",
 			"pics": [
 				"pics/sandals/019-1.jpg",
@@ -328,7 +328,7 @@
 			"condition": "new",
 			"size": 40,
 			"remarks": "",
-			"price": 15,
+			"price": 8,
 			"preview": "pics/sandals/020-pre.jpg",
 			"pics": [
 				"pics/sandals/020-1.jpg",
@@ -339,11 +339,13 @@
 	],
 	"cart": [],
 	"errors": [],
-	"modals": {
-		"confirmCheckoutOpening": false
+	"filterKeys": {
+		"sandals": [ "brand", "season", "size", "price" ],
+		"t-shorts": [ "brand", "season", "size", "price" ], 
+		"shorts": [ "brand", "season", "size", "price" ],
+		"jeans": [ "brand", "season", "size", "price" ],
+		"jackets": [ "brand", "season", "size", "price" ]
 	},
-	"filters": {},
 	"sendingService": false,
-	"orders": [],
-	"groups": [ "sandals", "t-shorts" ]
+	"orders": []
 }

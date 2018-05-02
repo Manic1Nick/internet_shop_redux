@@ -37,7 +37,6 @@ class ModalConfirmCheckout extends Component {
 
                     <ListItemsInCart 
                         itemsInCart={ itemsInCart }
-                        history={ history }
                         incrItem={ incrItem }
                         decrItem={ decrItem }
                         deleteItem={ deleteItem }

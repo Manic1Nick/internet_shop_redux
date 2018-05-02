@@ -1,14 +1,18 @@
 import { PropTypes } from 'prop-types'
 import { Route } from 'react-router-dom'
-import { Well } from 'react-bootstrap'
+import { Well, Badge } from 'react-bootstrap'
 
 import '../../styles/ItemsGroupsPage.less'
 
-const ItemsGroupsPage = ({ groups=[], addFilter=f=>f, history }) => {
+const ItemsGroupsPage = ({ groups=[], itemsInStock=[], history }) => {
 
     const selectGroup = (group) => {
-        addFilter({ group })
         history.push(`/${group}`)
+    }
+
+    const quantityInGroup = (group) => {    
+        let itemsInGroup = itemsInStock.filter(item => group === item.group && item.inStock > 0)
+        return itemsInGroup.length
     }
 
 	return (
@@ -20,7 +24,7 @@ const ItemsGroupsPage = ({ groups=[], addFilter=f=>f, history }) => {
                         className='items-group' 
                         onClick={ () => selectGroup(group) }
                     >
-                        <p>{ group }</p>
+                        <p>{ group } <Badge>{ quantityInGroup(group) }</Badge></p>
                     </Well>
                 )
             }
@@ -30,8 +34,8 @@ const ItemsGroupsPage = ({ groups=[], addFilter=f=>f, history }) => {
 
 ItemsGroupsPage.propTypes = {
     groups: PropTypes.array,
-    history: PropTypes.object,
-    addFilter: PropTypes.func
+    itemsInStock: PropTypes.array,
+    history: PropTypes.object
 }
 
 export default ItemsGroupsPage

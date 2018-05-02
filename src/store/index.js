@@ -22,7 +22,6 @@ const consoleMessages = store => next => action => {
 
 		base stock: ${stock.map(item => `${item.name}=${item.inStock}`)}
 		stock in cart: ${cart.map(item => `${item.name}=${item.inStock}`)}
-		filter: ${Object.keys(filters).map(key => `${key}=${filters[key]}`)}
 		cart: ${cart.map(item => `${item.name}=${item.inCart}`)}
 		errors: ${errors.length},
 		orders: ${orders}

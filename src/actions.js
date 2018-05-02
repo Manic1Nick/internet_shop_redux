@@ -58,28 +58,6 @@ export const clearCart = () => ({
     type: C.CLEAR_CART
 })
 
-export const openModal = () => ({
-    type: C.OPEN_MODAL
-})
-
-export const closeModal = () => ({
-    type: C.CLOSE_MODAL
-})
-
-export const addFilter = (filter) => ({
-    type: C.ADD_FILTER,
-    payload: filter
-})
-
-export const deleteFilter = (key) => ({
-    type: C.DELETE_FILTER,
-    payload: key
-})
-
-export const clearFiltersInGroup = () => ({
-    type: C.CLEAR_FILTERS_IN_GROUP
-})
-
 export const changeStock = (item, diff) => ({
     type: C.CHANGE_STOCK,
     payload: { item, diff }

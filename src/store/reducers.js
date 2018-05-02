@@ -57,36 +57,9 @@ export const stock = (state = [], action) => {
 	return stock
 }
 
-export const confirmCheckoutOpening = (state = false, action) => {
+export const filterKeys = (state = {}, action) => {
 
 	switch (action.type) {
-		case C.OPEN_MODAL:
-			return true
-
-		case C.CLOSE_MODAL:
-			return false
-
-		default:
-      		return state
-	}
-}
-
-export const filters = (state = {}, action) => {
-
-	let newFilters = Object.assign({}, state)
-
-	switch (action.type) {
-		case C.ADD_FILTER:
-			newFilters = Object.assign(newFilters, action.payload)
-			return newFilters
-
-		case C.DELETE_FILTER:
-			delete newFilters[action.payload]
-			return newFilters
-
-		case C.CLEAR_FILTERS_IN_GROUP:
-			return { 'group': newFilters['group'] }
-
 		default:
       		return state
 	}
@@ -123,14 +96,6 @@ export const orders = (state = [], action) => {
 	}	
 }
 
-export const groups = (state = [], action) => {
-
-	switch (action.type) {
-		default:
-			return state
-	}	
-}
-
 export const errors = (state = [], action) => {
 
 	switch (action.type) {
@@ -152,11 +117,7 @@ export default combineReducers({
 	cart,
 	stock,
 	errors,
-	modals: combineReducers({
-		confirmCheckoutOpening
-	}),
-	filters,
+	filterKeys,
 	sendingService,
-	orders,
-	groups
+	orders
 })

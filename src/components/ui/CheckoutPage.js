@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import emailjs from 'emailjs-com'
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, ButtonToolbar } from 'react-bootstrap'
 import CheckoutForm from './CheckoutForm'
-import CartUtil from '../util/CartUtil'
+import CartUtil from '../../util/CartUtil'
 
 import '../../styles/CheckoutPage.less';
 

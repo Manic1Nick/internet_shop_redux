@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types'
 import { Table, Button, PageHeader } from 'react-bootstrap'
 
-import CartUtil from '../util/CartUtil'
+import CartUtil from '../../util/CartUtil'
 import ListItemsInCart from './ListItemsInCart'
 
 import '../../styles/Cart.less'

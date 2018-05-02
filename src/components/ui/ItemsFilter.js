@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import { ButtonToolbar, SplitButton, MenuItem, Button } from 'react-bootstrap'
 
 import '../../styles/ItemsFilter.less'
-import FilterUtil from '../util/FilterUtil'
+import FilterUtil from '../../util/FilterUtil'
 
 class ItemsFilter extends Component {
 

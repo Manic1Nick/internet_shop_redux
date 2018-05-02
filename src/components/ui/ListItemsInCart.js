@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import { Component } from 'react'
 import { Table, Button, PageHeader } from 'react-bootstrap'
 
-import CartUtil from '../util/CartUtil'
+import CartUtil from '../../util/CartUtil'
 import ItemCartView from './ItemCartView'
 
 import '../../styles/Cart.less'

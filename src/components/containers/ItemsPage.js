@@ -1,5 +1,4 @@
 import ItemsPage from '../ui/ItemsPage'
-import FilterUtil from '../util/FilterUtil'
 import { bindActionCreators as action } from 'redux'
 import { connect } from 'react-redux'
 import { 

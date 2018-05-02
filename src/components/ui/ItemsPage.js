@@ -7,7 +7,7 @@ import Item from './Item'
 import ItemsGrid from './ItemsGrid'
 import ItemsFilter from './ItemsFilter'
 import ModalConfirmCheckout from './ModalConfirmCheckout'
-import FilterUtil from '../util/FilterUtil'
+import FilterUtil from '../../util/FilterUtil'
 
 import '../../styles/ItemsPage.less'
 

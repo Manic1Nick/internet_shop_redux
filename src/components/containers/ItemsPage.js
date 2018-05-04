@@ -5,10 +5,8 @@ import {
 	addNewItemToCart, 
 	increaseItemInCart, 
 	decreaseItemInCart, 
-	deleteItemFromCart, 
-	deleteAllItemsFromCart
+	deleteItemFromCart
 } from '../../actions'
-
 
 const mapStateToProps = (state, ownProps) => {
     return {

@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import emailjs from 'emailjs-com'
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, ButtonToolbar } from 'react-bootstrap'
 import CheckoutForm from './CheckoutForm'
-import CartUtil from '../../util/CartUtil'
+import { createMessageForCheckout } from '../../util/CartUtil'
 
 import '../../styles/CheckoutPage.less';
 
@@ -12,7 +12,7 @@ const emailUserId = 'user_7YhRgyAEc5mxQKsUCNRx7';
 
 const CheckoutPage = ({ history, orders=[], itemsInCart=[], makeOrder=f=>f, updateItems=f=>f, sending=false }) => {
 
-    let baseMessage = CartUtil.createMessageForCheckout(itemsInCart)
+    let baseMessage = createMessageForCheckout(itemsInCart)
 
     return (
             <div className='CheckoutPage'>

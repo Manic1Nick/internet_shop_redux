@@ -6,6 +6,7 @@ import ItemsGroupsPage from './containers/ItemsGroupsPage'
 import ItemsPage from './containers/ItemsPage'
 import CheckoutPage from './containers/CheckoutPage'
 import Menu from './containers/Menu'
+import ItemPage from './ui/ItemPage'
 import WelcomePage from './ui/WelcomePage'
 import About from './ui/AboutPage'
 import Terms from './ui/TermsPage'
@@ -39,5 +40,5 @@ const Whoops404 = ({ location }) =>
 const ItemsPageContainer = () => 
     <Switch>
         <Route exact path='/:group' component={ItemsPage} /> 
-        <Route path='/:group/:id' component={ItemsPage} /> 
+        <Route path='/:group/:id' component={ItemsPage} />
     </Switch>

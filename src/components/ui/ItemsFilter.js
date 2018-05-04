@@ -4,7 +4,12 @@ import { Route } from 'react-router-dom'
 import { ButtonToolbar, SplitButton, MenuItem, Button } from 'react-bootstrap'
 
 import '../../styles/ItemsFilter.less'
-import FilterUtil from '../../util/FilterUtil'
+import {
+    genFilterButtonValues,
+    genTitleButton,
+    genStyleTitleButton,
+    genFilterNames
+} from '../../util/FilterUtil'
 
 class ItemsFilter extends Component {
 
@@ -23,54 +28,51 @@ class ItemsFilter extends Component {
         }
     }
 
-    renderSplitButton(key, i) {
+    renderSplitButton(filterName, i) {
         const { 
-            filterKeys,
-            filteredItems,
-            updateFilter, 
-            deleteFilter
+            filterKeys={},
+            groupItems=[],
+            filteredItems=[],
+            updateFilter=f=>f, 
+            deleteFilter=f=>f
         } = this.props
 
         const { activeFilter } = this.state,
-            isFilterGroup = key === 'group',
-            values = isFilterGroup 
-                ? Object.keys(filterKeys) 
-                : FilterUtil.getItemValues(filteredItems, key)
-
-        let title = key, 
-            styleButton = 'default'
-
-        if (activeFilter[key]) {
-            title = `${key}:${activeFilter[key]}`
-            styleButton = 'warning'
-        }
-
-        if (isFilterGroup) title += ` (${filteredItems.length})`
-
+            filterValues = genFilterButtonValues(filterName, activeFilter, filterKeys, groupItems, filteredItems),
+            buttonTitle = genTitleButton(filterName, activeFilter, filteredItems),
+            buttonStyle = genStyleTitleButton(filterName, activeFilter)
+        
         return(
             <SplitButton
                 className='btn btn-filters'
-                bsStyle={styleButton}
-                title={title}
+                bsStyle={buttonStyle}
+                title={buttonTitle}
                 key={i}
                 id={`split-button-basic-${i}`}
             >
                 {
-                    values.map((value, index) =>
-                        <MenuItem
-                            key={index}
-                            eventKey={index}
-                            onSelect={ () => updateFilter({ [key]: value }) }
-                            //disabled={ !FilterUtil.validateValue(filteredItems, { [key]: value }) }
-                        >{ value }</MenuItem>
+                    filterValues.map((filterValue, index) => {
+                        // let isFilterValueDisabled = FilterUtil.isFilterValueDisabled(
+                        //         filterName, filterValue, activeFilter, filteredItems
+                        //     )
+
+                        return(
+                            <MenuItem
+                                key={index}
+                                eventKey={index}
+                                onSelect={ () => updateFilter({ [filterName]: filterValue }) }
+                                //disabled={ isFilterValueDisabled }
+                            >{ filterValue }</MenuItem>
+                        )
+                    }
                     )
                 }
 
                 <MenuItem divider />
                 <MenuItem 
                     eventKey='100' 
-                    onSelect={ () => deleteFilter([key]) } 
-                    disabled={ isFilterGroup }
+                    onSelect={ () => deleteFilter([filterName]) } 
+                    disabled={ filterName === 'group' }
                 >clear</MenuItem>
 
             </SplitButton>
@@ -78,14 +80,15 @@ class ItemsFilter extends Component {
     }
 
 	render() {
-        const { clearFiltersInGroup } = this.props,
-            filterButtons = this._generateFilterButtons()
+        const { filterKeys, clearFiltersInGroup } = this.props,
+            { activeFilter } = this.state,
+            filterNames = genFilterNames(filterKeys, activeFilter)
 
 		return(
 			<div className='ItemsFilter'>
                 <ButtonToolbar>
                 { 
-                    filterButtons.map((key, i) => this.renderSplitButton(key, i))
+                    filterNames.map((filterName, i) => this.renderSplitButton(filterName, i))
                 }
                 </ButtonToolbar>
 
@@ -97,18 +100,12 @@ class ItemsFilter extends Component {
 			</div>
 		)
     }
-
-    _generateFilterButtons() {
-        const { filterKeys } = this.props,
-            { activeFilter } = this.state
-        
-        return [ 'group', ...filterKeys[activeFilter['group']] ]
-    }
 }
 
 ItemsFilter.propTypes = {
     filterKeys: PropTypes.object,
     filteredItems: PropTypes.array,
+    groupItems: PropTypes.array,
     updateFilter: PropTypes.func, 
     deleteFilter: PropTypes.func,
     clearFiltersInGroup: PropTypes.func

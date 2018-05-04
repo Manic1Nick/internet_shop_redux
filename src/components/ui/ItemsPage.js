@@ -1,13 +1,14 @@
 import { PropTypes } from 'prop-types'
 import { Component } from 'react'
 import { Route } from 'react-router-dom'
-import { Well, Button } from 'react-bootstrap'
+import { Well, Button, Pager } from 'react-bootstrap'
 
-import Item from './Item'
+import ItemPage from './ItemPage'
 import ItemsGrid from './ItemsGrid'
 import ItemsFilter from './ItemsFilter'
 import ModalConfirmCheckout from './ModalConfirmCheckout'
-import FilterUtil from '../../util/FilterUtil'
+
+import { filterItems } from '../../util/FilterUtil'
 
 import '../../styles/ItemsPage.less'
 
@@ -16,9 +17,18 @@ class ItemsPage extends Component {
     constructor(props) {
         super(props)
 		this.state = {
-            filter: { 'group': props.match.params.group },
+            filter: { group: props.match.params.group },
+            filteredItems: [],
             modalConfirmCheckoutOpening: false
 		}
+    }
+
+    componentDidMount() {
+        const { itemsInStock } = this.props,
+            { filter } = this.state
+        this.setState({
+            filteredItems: filterItems(itemsInStock, filter)
+        })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -31,23 +41,29 @@ class ItemsPage extends Component {
     onChangeFilter(addingFilter) {
         let { filter } = this.state,
             newFilter = Object.assign(filter, addingFilter)
-        this.setState({ filter: newFilter })
+        this.updateFilter(newFilter)
     }
     
     onDeleteFilter(key) {
         let { filter } = this.state
         delete filter[key]
-        this.setState({ filter })
+        this.updateFilter(filter)
     }
 
     onClearFiltersInGroup() {
-        let { filter } = this.state,
-            newFilter = { 'group': filter['group'] }
-        this.setState({ filter: newFilter })
+        let { group } = this.state.filter
+        this.updateFilter({ group })
+    }
+
+    updateFilter(filter) {
+        const { itemsInStock } = this.props,
+            filteredItems = filterItems(itemsInStock, filter)
+        
+        this.setState({ filter, filteredItems })
+        this.onOpenGroup()
     }
 	
 	onBuyItem = (item) => { 
-        console.log('buy', item.id)
 		this.props.buyItem(item)
 		this.openModalConfirmCheckout()
 	}
@@ -63,11 +79,14 @@ class ItemsPage extends Component {
 	}
 	
 	onOpenItem = (item) => {
+        this.closeModalConfirmCheckout()
+        
+        //const { filter } = this.state
         const { history, match } = this.props
-		if (this.state.modalConfirmCheckoutOpening) this.closeModalConfirmCheckout()
-		history.push(`${match.url}/${item.id}`)
-	}
-    
+        if (match.params.id) history.push(`${item.id}`)
+        else history.push(`${match.url}/${item.id}`)
+    }
+
     openModalConfirmCheckout() {
         this.setState({ modalConfirmCheckoutOpening: true })
     }
@@ -76,32 +95,41 @@ class ItemsPage extends Component {
         this.setState({ modalConfirmCheckoutOpening: false })
     }
 
-	renderItem = (id) => {
-        const { itemsInStock=[] } = this.props,
-            currentItem = itemsInStock.find(item => item.id === id)
-
+	renderItem = () => {
+        const { filteredItems } = this.state,
+            { itemsInCart, itemsInStock, filterKeys, match } = this.props
+        
+        let itemsOnPage = filteredItems.length > 0 ? filteredItems : itemsInCart.length > 0 ? itemsInCart : itemsInStock,
+            currentItem = itemsOnPage.find(item => item.id === parseInt(match.params.id)),   
+            prevItem = itemsOnPage[itemsOnPage.indexOf(currentItem) - 1],
+            nextItem = itemsOnPage[itemsOnPage.indexOf(currentItem) + 1]
+            
         return(
-            <div className='Item'>
-                <Button bsStyle="warning" onClick={ () => this.onOpenGroup() }>Return to group</Button>
-                <Item 
-                    currentItem={ currentItem } 
-                    buyItem={ this.onBuyItem } 
-                />
-            </div>
+            <ItemPage 
+                currentItem={ currentItem }
+                prevItem={ prevItem }
+                nextItem={ nextItem }
+                filterKeys={ filterKeys }
+                openItem={ this.onOpenItem }
+                openGroup={ this.onOpenGroup }
+                updateFilter={ this.updateFilter.bind(this) }
+                buyItem={ this.onBuyItem } 
+            />
         )
     }
 
 	renderItemsGrid = () => {
         const 
-            { filter } = this.state,
+            { filter, filteredItems } = this.state,
             { itemsInStock=[], filterKeys={} } = this.props,
-            filteredItems = FilterUtil.filterItems(itemsInStock, filter)
+            groupItems = itemsInStock.filter(item => item.group === filter.group)
 
         return(
             <div className='ItemsGrid'>
                 <ItemsFilter 
                     activeFilter={ filter }
                     filterKeys={ filterKeys }
+                    groupItems={ groupItems }
                     filteredItems={ filteredItems } 
                     updateFilter={ this.onChangeFilter.bind(this) } 
                     deleteFilter={ this.onDeleteFilter.bind(this) }
@@ -125,7 +153,6 @@ class ItemsPage extends Component {
     }
 
     render() {
-
         const {
             itemsInCart=[],
             match,
@@ -141,7 +168,7 @@ class ItemsPage extends Component {
                 { 
                     match.params.id 
                 ? 
-                    this.renderItem(parseInt(match.params.id)) 
+                    this.renderItem() 
                 : 
                     this.renderItemsGrid() 
                 }

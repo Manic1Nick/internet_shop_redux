@@ -2,7 +2,13 @@
 
 .Item {
 	.item-info {		
-		p:first-child { margin-top: 1%; }
+		p:first-child { 
+			margin-top: 1%; 
+
+			.btn-link {
+				padding: 2px 4px 4px 4px;
+			}
+		}
 	}
 
     .item-pics {
@@ -13,5 +19,14 @@
     			margin: auto;
     		}
 		}
-    }
+	}
+
+	.pager { margin: 5px 0; }
+	
+	.action-buttons {
+		margin: 0 5%;
+
+		display: flex;
+		justify-content: space-between;
+	}
 }

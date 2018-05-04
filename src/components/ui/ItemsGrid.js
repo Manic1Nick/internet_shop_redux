@@ -16,11 +16,14 @@ class ItemsGrid extends Component {
 			gutter: 10,
 			isFitWidth: true
 		})
+		this.msnry.layout()
 	}
 
-	componentDidUpdate() {
-		this.msnry.reloadItems()
-		this.msnry.layout()
+	componentDidUpdate(prevProps) {
+		if (prevProps.items !== this.props.items) {
+			this.msnry.reloadItems()
+			this.msnry.layout()
+		}
 	}
 	
 	render() {

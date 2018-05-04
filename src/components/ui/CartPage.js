@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types'
 import { Table, Button, PageHeader } from 'react-bootstrap'
 
-import CartUtil from '../../util/CartUtil'
+import { calcTotalQuantity } from '../../util/CartUtil'
 import ListItemsInCart from './ListItemsInCart'
 
 import '../../styles/Cart.less'
@@ -25,7 +25,7 @@ const CartPage = (props) => {
 		)
 	}
 
-	const quantityCart = CartUtil.calcTotalQuantity(itemsInCart)
+	const quantityCart = calcTotalQuantity(itemsInCart)
 
 	const onClearCart = () => {
 		if (confirm(`All items will be delete from your cart`)) 

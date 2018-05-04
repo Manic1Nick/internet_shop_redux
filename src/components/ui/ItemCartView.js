@@ -4,61 +4,57 @@ import { ButtonGroup, Button } from 'react-bootstrap'
 
 import '../../styles/ItemCartView.less'
 
-class ItemCartView extends Component {
+const ItemCartView = (props) => {
 	
-	render() {
+	const {
+		name, 
+		price, 
+		quantity, 
+		maxQuantity, 
+		onOpenItem, 
+		onDecrItem, 
+		onIncrItem, 
+		onDeleteItem
+	} = props
 
-		const {
-			name, 
-			price, 
-			quantity, 
-			maxQuantity, 
-			onOpenItem, 
-			onDecrItem, 
-			onIncrItem, 
-			onDeleteItem
-		} = this.props
+	return (
+		<tr className='ItemCartView'>
 
-		return (
-			<tr className='ItemCartView'>
+			<td className='item__name' 
+				onClick={ () => onOpenItem() }>
+				{ name }
+			</td>
 
-				<td className='item__name' 
-					onClick={ () => onOpenItem() }>
-					{ name }
-				</td>
+			<td className='item__price'>
+				{ `$ ${price}` }
+			</td>
 
-				<td className='item__price'>
-					{ `$ ${price}` }
-				</td>
+			<td className='item__quantity'>					
+				<Button
+					className='btn-decr' 
+					onClick={ () => onDecrItem() } 
+					disabled={ quantity === 0 }
+				>-</Button>	    			
+				{ 
+					quantity 
+				}					
+				<Button
+					className='btn-incr' 
+					onClick={ () => onIncrItem() } 
+					disabled={ quantity === maxQuantity }
+				>+</Button>	    			
+			</td>
 
-				<td className='item__quantity'>					
-	    			<Button
-	    				className='btn-decr' 
-						onClick={ () => onDecrItem() } 
-						disabled={ quantity === 0 }
-					>-</Button>	    			
-					{ 
-						quantity 
-					}					
-	    			<Button
-	    				className='btn-incr' 
-						onClick={ () => onIncrItem() } 
-						disabled={ quantity === maxQuantity }
-					>+</Button>	    			
-				</td>
+			<td className='item__summ'>
+				{ `$ ${price * quantity}` }
+			</td>
 
-				<td className='item__summ'>
-					{ `$ ${price * quantity}` }
-				</td>
-
-				<td className="btn-del" 
-					onClick={ () => onDeleteItem() }
-				> x </td>
-					
-			</tr>
-		)
-	}
-
+			<td className="btn-del" 
+				onClick={ () => onDeleteItem() }
+			> x </td>
+				
+		</tr>
+	)
 }
 
 export default ItemCartView

@@ -1,39 +1,105 @@
-export default class FIlterUtil {
+export function filterItems(items, filter) {
+    if (!filter || Object.keys(filter).length === 0) return items
+    
+    let filteredItems = []
+    items.forEach(item => {
+        if (validateFilteredItem(item, filter)) filteredItems.push(item)
+    })
+    return filteredItems
+}
 
-    static filterItems(items, filter) {
-		if (!filter || Object.keys(filter).length === 0) return items
-		
-		let filteredItems = []
-		items.forEach(item => {
-			if (this.validateFilteredItem(item, filter)) filteredItems.push(item)
-		})
-		return filteredItems
-	}
+export function validateFilteredItem(item, filter) {
+    for (let key in filter) {
+        if (filter[key] !== item[key]) return false
+    }
+    return true
+}
 
-	static validateFilteredItem(item, filter) {
-		for (let key in filter) {
-			if (filter[key] !== item[key]) return false
-		}
-		return true
+export function getItemValues(items=[], key) {
+    let values = []
+
+    items.forEach(item => {
+        if (!values.includes(item[key])) values.push(item[key])
+    })
+    return values.sort()
+}
+
+export function validateValue(items, filter={}) {
+    let result = false, 
+        key = Object.keys(filter)[0]
+
+    items.forEach(item => {
+        if(item[key] && item[key] === filter[key]) result = true
+    })
+
+    return result
+}
+
+export function genFilterNames(filterKeys, activeFilter) {
+    const { group } = activeFilter
+    
+    return [ 'group', ...filterKeys[group] ]
+}
+
+export function genTitleButton(buttonName, activeFilter, filteredItems) {
+    let titleButton = buttonName,
+        buttonValue = activeFilter[buttonName]
+
+    if (buttonValue) {
+        titleButton = `${buttonName}:${buttonValue}`
+    }
+    if (buttonName === 'group') {
+        titleButton += ` (${filteredItems.length})`
+    }
+    return titleButton
+}
+
+export function genStyleTitleButton(buttonName, activeFilter) {
+    let styleButton = 'default'
+    
+    if (activeFilter[buttonName]) {
+        styleButton = 'warning'
     }
     
-    static getItemValues(items=[], key) {
-        let values = []
+    return styleButton
+}
 
-        items.forEach(item => {
-            if (!values.includes(item[key])) values.push(item[key])
-        })
-        return values.sort()
+export function genFilterButtonValues(filterName, activeFilter, filterKeys, groupItems, filteredItems) {
+    let isFilterGroupButton = filterName === 'group',
+    isFilterButtonActive = activeFilter[filterName],
+    filterButtonValues = []
+    
+    if (isFilterGroupButton) {
+        filterButtonValues = Object.keys(filterKeys)
+        
+    } else if (isFilterButtonActive) {
+        filterButtonValues = getItemValues(groupItems, filterName)
+        
+    } else {
+        filterButtonValues = getItemValues(filteredItems, filterName)
     }
+    
+    return filterButtonValues
+}
 
-    static validateValue(items, filter={}) {
-        let result = false, 
-            key = Object.keys(filter)[0]
+export function isButtonValueDisabled(buttonName, buttonValue, activeFilter, filteredItems) {
+    let activeButtons = Object.keys(activeFilter),
+        isLastActiveButton = activeButtons.lastIndexOf(buttonName) === activeButtons.length - 1,
+        isFilterGroupButton = buttonName === 'group',
+        isValueSelectalable = validateValue(filteredItems, { [buttonName]: buttonValue })    
 
-        items.forEach(item => {
-            if(item[key] && item[key] === filter[key]) result = true
-        })
+    return !isLastActiveButton && !isFilterGroupButton && !isValueSelectalable
+}
 
-        return result
-    }
+export function genFilterData(filterKeys, activeFilter, groupItems) {
+    let filterData = { group: Object.keys(filterKeys) },
+        groupKeys = filterKeys[activeFilter.group],
+        groupValues = []
+
+    groupKeys.forEach(groupKey => {
+        groupValues = getItemValues(groupItems, groupKey)
+        filterData[groupKey] = groupValues
+    })
+
+    return filterData
 }

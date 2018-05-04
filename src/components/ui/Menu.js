@@ -13,33 +13,32 @@ const Menu = ({ itemsInCart=[] }) => {
     })
 
     return (
-    	<Navbar className='Menu'>
-      	  	<Navbar.Collapse>
+    	<Navbar className='Menu' collapseOnSelect>
       	  	  	<Nav className='menu-links'>
-                    <LinkContainer className='menu-link' to="/about">
-                        <NavItem eventKey={1} href="#">
+                    <LinkContainer to="/about">
+                        <NavItem className='menu-link'>
                             About
                         </NavItem>
                     </LinkContainer>
-                    <LinkContainer className='menu-link' to="/items">
-                        <NavItem eventKey={2} href="#">
+                    <LinkContainer to="/items">
+                        <NavItem className='menu-link'>
                             Items
                         </NavItem>
                     </LinkContainer>
-                    <LinkContainer className='menu-link' to="/terms">
-                        <NavItem eventKey={3} href="#">
+                    <LinkContainer to="/terms">
+                        <NavItem className='menu-link'>
                             Terms
                         </NavItem>
                     </LinkContainer>
-                    <LinkContainer className='menu-link' to="/contacts">
-                        <NavItem eventKey={4} href="#">
+                    <LinkContainer to="/contacts">
+                        <NavItem className='menu-link'>
                             Contacts
                         </NavItem>
                     </LinkContainer>
                 </Nav>
                 <Nav pullRight>
-                    <LinkContainer className='menu-link' to="/cart">
-                        <NavItem eventKey={5} href="#">
+                    <LinkContainer to="/cart">
+                        <NavItem className='menu-link'>
                             Cart
                             { 
                                 quantityItems > 0
@@ -49,7 +48,6 @@ const Menu = ({ itemsInCart=[] }) => {
                         </NavItem>
                     </LinkContainer>
                 </Nav>
-      	  	</Navbar.Collapse>
       	</Navbar> 
     )
 }

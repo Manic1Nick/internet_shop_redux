@@ -33,7 +33,7 @@ class ItemsFilter extends Component {
             filterKeys={},
             groupItems=[],
             filteredItems=[],
-            updateFilter=f=>f, 
+            addFilter=f=>f, 
             deleteFilter=f=>f
         } = this.props
 
@@ -60,7 +60,7 @@ class ItemsFilter extends Component {
                             <MenuItem
                                 key={index}
                                 eventKey={index}
-                                onSelect={ () => updateFilter({ [filterName]: filterValue }) }
+                                onSelect={ () => addFilter({ [filterName]: filterValue }) }
                                 //disabled={ isFilterValueDisabled }
                             >{ filterValue }</MenuItem>
                         )
@@ -106,7 +106,7 @@ ItemsFilter.propTypes = {
     filterKeys: PropTypes.object,
     filteredItems: PropTypes.array,
     groupItems: PropTypes.array,
-    updateFilter: PropTypes.func, 
+    addFilter: PropTypes.func, 
     deleteFilter: PropTypes.func,
     clearFiltersInGroup: PropTypes.func
 }

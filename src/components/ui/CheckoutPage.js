@@ -14,6 +14,14 @@ const CheckoutPage = ({ history, orders=[], itemsInCart=[], makeOrder=f=>f, upda
 
     let baseMessage = createMessageForCheckout(itemsInCart)
 
+    const cancelOrder = () => {
+        history.push(`/items`)
+    }
+
+    const confirmationOrder = () => {
+        history.push(`/confirmation`)
+    }
+
     return (
             <div className='CheckoutPage'>
                 <h2 className='checkout__title'>
@@ -25,8 +33,8 @@ const CheckoutPage = ({ history, orders=[], itemsInCart=[], makeOrder=f=>f, upda
                     onSubmit={ makeOrder }
                     sendingOn={ sending }
                     orders={ orders }
-                    onCancel={ () => history.push(`/items`) }
-                    onConfirmation={ () => history.push(`/confirmation`) }
+                    onCancel={ () => cancelOrder() }
+                    onConfirmation={ () => confirmationOrder() }
                 />
             </div>
         )

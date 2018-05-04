@@ -23,7 +23,7 @@ const ItemPage = (props) => {
                 <Pager>
                     <Pager.Item href="#" 
                         className='btn-return'
-                        onClick={ () => openGroup() }
+                        onClick={ () => openGroup(currentItem.group) }
                     >Return to group</Pager.Item>
                 </Pager>
 

@@ -21,7 +21,8 @@ const Item = (props) => {
     } = currentItem
 
     const onFilter = (filter) => {
-        updateFilter(Object.assign( { group }, filter ))
+        filter.group = group
+        updateFilter(filter)
     }
 
     const styleEmptyStock = inStock === 0 ? { color: 'red' } : {}

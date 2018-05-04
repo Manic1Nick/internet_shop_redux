@@ -36,7 +36,7 @@
 			"id": 3,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Spring",
 			"condition": "new",
 			"size": 40,
@@ -53,7 +53,7 @@
 			"id": 4,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Queen",
 			"condition": "new",
 			"size": 39,
@@ -70,7 +70,7 @@
 			"id": 5,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Beauty",
 			"condition": "new",
 			"size": 40,
@@ -87,7 +87,7 @@
 			"id": 6,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Flex",
 			"condition": "new",
 			"size": 38,
@@ -104,7 +104,7 @@
 			"id": 7,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Elegant",
 			"condition": "new",
 			"size": 40,
@@ -138,7 +138,7 @@
 			"id": 9,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Violet",
 			"condition": "new",
 			"size": 41,
@@ -155,7 +155,7 @@
 			"id": 10,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Leo",
 			"condition": "new",
 			"size": 40,
@@ -172,7 +172,7 @@
 			"id": 11,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Strong",
 			"condition": "new",
 			"size": 41,
@@ -204,7 +204,7 @@
 			"id": 13,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Flip-Flop",
 			"condition": "new",
 			"size": 40,
@@ -221,7 +221,7 @@
 			"id": 14,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Summer Provance",
 			"condition": "new",
 			"size": 39,
@@ -272,7 +272,7 @@
 			"id": 17,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Blue Rose",
 			"condition": "new",
 			"size": 40,
@@ -289,7 +289,7 @@
 			"id": 18,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Yellow Strong",
 			"condition": "new",
 			"size": 38,
@@ -306,7 +306,7 @@
 			"id": 19,
 			"group": "sandals",
 			"season": "summer",
-			"brand": "Quelle",
+			"brand": "Paolo Santini",
 			"name": "Silver Dream",
 			"condition": "new",
 			"size": 41,
@@ -335,16 +335,318 @@
 				"pics/sandals/020-2.jpg"
 			],
 			"inStock": 1
+		},
+		{
+			"id": 21,
+			"group": "t-shirts",
+			"brand": "XTSY",
+			"name": "Yes We Can",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 8,
+			"preview": "pics/t-shirts/001-1-pre.jpg",
+			"pics": [
+				"pics/t-shirts/001-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 22,
+			"group": "t-shirts",
+			"brand": "XTSY",
+			"name": "Extasy Red",
+			"condition": "new",
+			"size": "S",
+			"remarks": "",
+			"price": 8,
+			"preview": "pics/t-shirts/002-1-pre.jpg",
+			"pics": [
+				"pics/t-shirts/002-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 23,
+			"group": "shirts",
+			"brand": "XTSY",
+			"name": "Grey Day",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 5,
+			"preview": "pics/shirts/001-1-pre.jpg",
+			"pics": [
+				"pics/shirts/001-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 24,
+			"group": "shirts",
+			"brand": "XTSY",
+			"name": "Intelligent",
+			"condition": "new",
+			"size": "S",
+			"remarks": "",
+			"price": 7,
+			"preview": "pics/shirts/002-1-pre.jpg",
+			"pics": [
+				"pics/shirts/002-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 25,
+			"group": "shirts",
+			"brand": "XTSY",
+			"name": "Blue Deep",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 6,
+			"preview": "pics/shirts/003-1-pre.jpg",
+			"pics": [
+				"pics/shirts/003-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 27,
+			"group": "jeans",
+			"brand": "XTSY",
+			"name": "White Power",
+			"color": "white",
+			"condition": "new",
+			"size": "W29 L30",
+			"remarks": "",
+			"price": 14,
+			"preview": "pics/jeans/001-1-pre.jpg",
+			"pics": [
+				"pics/jeans/001-1.jpg",
+				"pics/jeans/001-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 28,
+			"group": "jeans",
+			"brand": "XTSY",
+			"name": "Sweet Sky",
+			"color": "magenta",
+			"condition": "new",
+			"size": "W30 L32",
+			"remarks": "",
+			"price": 14,
+			"preview": "pics/jeans/002-1-pre.jpg",
+			"pics": [
+				"pics/jeans/002-1.jpg",
+				"pics/jeans/002-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 29,
+			"group": "jeans",
+			"brand": "XTSY",
+			"name": "Pink Flower",
+			"color": "pink",
+			"condition": "new",
+			"size": "W30 L30",
+			"remarks": "",
+			"price": 14,
+			"preview": "pics/jeans/003-1-pre.jpg",
+			"pics": [
+				"pics/jeans/003-1.jpg",
+				"pics/jeans/003-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 30,
+			"group": "jeans",
+			"brand": "XTSY",
+			"name": "Red Sunset",
+			"color": "red",
+			"condition": "new",
+			"size": "W29 L28",
+			"remarks": "",
+			"price": 14,
+			"preview": "pics/jeans/004-1-pre.jpg",
+			"pics": [
+				"pics/jeans/004-1.jpg",
+				"pics/jeans/004-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 31,
+			"group": "jeans",
+			"brand": "XTSY",
+			"name": "Short",
+			"color": "magenta",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 12,
+			"preview": "pics/jeans/005-1-pre.jpg",
+			"pics": [
+				"pics/jeans/005-1.jpg",
+				"pics/jeans/005-2.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 32,
+			"group": "outerwear",
+			"brand": "C & A",
+			"name": "Premium Casual",
+			"kind": "jackets",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "S",
+			"remarks": "",
+			"price": 5,
+			"preview": "pics/outerwear/001-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/001-1.jpg",
+				"pics/outerwear/001-2.jpg",
+				"pics/outerwear/001-3.jpg"
+			],
+			"inStock": 3
+		},
+		{
+			"id": 33,
+			"group": "outerwear",
+			"brand": "C & A",
+			"name": "Premium Casual",
+			"kind": "jackets",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 5,
+			"preview": "pics/outerwear/001-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/001-1.jpg",
+				"pics/outerwear/001-2.jpg",
+				"pics/outerwear/001-3.jpg"
+			],
+			"inStock": 3
+		},
+		{
+			"id": 34,
+			"group": "outerwear",
+			"brand": "C & A",
+			"name": "Premium Casual",
+			"kind": "jackets",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "L",
+			"remarks": "",
+			"price": 5,
+			"preview": "pics/outerwear/001-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/001-1.jpg",
+				"pics/outerwear/001-2.jpg",
+				"pics/outerwear/001-3.jpg"
+			],
+			"inStock": 3
+		},
+		{
+			"id": 35,
+			"group": "outerwear",
+			"brand": "Made For Loving",
+			"name": "Smile",
+			"kind": "coats",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 40,
+			"preview": "pics/outerwear/002-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/002-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 36,
+			"group": "outerwear",
+			"brand": "Made For Loving",
+			"name": "Lady Black",
+			"kind": "coats",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "S",
+			"remarks": "",
+			"price": 35,
+			"preview": "pics/outerwear/003-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/003-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 37,
+			"group": "outerwear",
+			"brand": "Made For Loving",
+			"name": "Prestige Black",
+			"kind": "coats",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 50,
+			"preview": "pics/outerwear/004-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/004-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 38,
+			"group": "outerwear",
+			"brand": "Made For Loving",
+			"name": "Prestige Brown",
+			"kind": "coats",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 50,
+			"preview": "pics/outerwear/005-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/005-1.jpg"
+			],
+			"inStock": 1
+		},
+		{
+			"id": 39,
+			"group": "outerwear",
+			"brand": "XTSY",
+			"name": "Modern",
+			"kind": "jackets",
+			"season": "spring, autumn",
+			"condition": "new",
+			"size": "M",
+			"remarks": "",
+			"price": 20,
+			"preview": "pics/outerwear/006-1-pre.jpg",
+			"pics": [
+				"pics/outerwear/006-1.jpg"
+			],
+			"inStock": 1
 		}
 	],
 	"cart": [],
 	"errors": [],
 	"filterKeys": {
 		"sandals": [ "brand", "season", "size", "price" ],
-		"t-shorts": [ "brand", "season", "size", "price" ], 
-		"shorts": [ "brand", "season", "size", "price" ],
-		"jeans": [ "brand", "season", "size", "price" ],
-		"jackets": [ "brand", "season", "size", "price" ]
+		"t-shirts": [ "brand", "size", "price" ], 
+		"shirts": [ "brand", "size", "price" ],
+		"jeans": [ "brand", "color", "size", "price" ],
+		"outerwear": [ "brand", "kind", "season", "size", "price" ]
 	},
 	"sendingService": false,
 	"orders": []

@@ -29,9 +29,9 @@ export function calcSummByItems(items) {
 }
 
 export function createMessageForCheckout(items) {
-    let summCart = this.calcTotalSumm(items),
-        quantityByItems = this.calcQuantityByItems(items),
-        summByItems = this.calcSummByItems(items),
+    let summCart = calcTotalSumm(items),
+        quantityByItems = calcQuantityByItems(items),
+        summByItems = calcSummByItems(items),
         name, 
         quantity, 
         summ, 

@@ -10,19 +10,26 @@ class ItemsGrid extends Component {
 	componentDidMount() {
 		let grid = this.refs.grid
 
-		this.msnry = new Masonry( grid, {
-			itemSelector: '.ItemPreview',
-			columnWidth: 200,
-			gutter: 10,
-			isFitWidth: true
+		imagesLoaded( grid, () => {
+			// init Isotope after all images have loaded
+			this.msnry = new Masonry( grid, {
+				itemSelector: '.ItemPreview',
+				columnWidth: 200,
+				gutter: 10,
+				isFitWidth: true
+			})
+			this.msnry.layout()
 		})
-		this.msnry.layout()
 	}
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.items !== this.props.items) {
-			this.msnry.reloadItems()
-			this.msnry.layout()
+			let grid = this.refs.grid
+			
+			imagesLoaded( grid, () => {
+				this.msnry.reloadItems()
+				this.msnry.layout()
+			})
 		}
 	}
 	

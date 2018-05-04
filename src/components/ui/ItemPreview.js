@@ -4,40 +4,35 @@ import { Button } from 'react-bootstrap'
 
 import '../../styles/ItemPreview.less'
 
-const ItemPreview = (props) => {
+const ItemPreview = ({ item={}, buyItem=f=>f, openItem=f=>f }) => {
 
-    const {
-        item={},
-        buyItem=f=>f,
-        openItem=f=>f
-    } = props
+    const { id, name, brand, size, price, inStock, preview } = item
 
     return(
         <div className='ItemPreview'>
             <figure className='item-pic'>
                 <figcaption>
-                    {`${item.name}`}
+                    {`${name}`}
                 </figcaption>
-                <img src={item.preview} alt='Item image' 
-                    onClick={() => openItem(item.id)}
+                <img src={preview} alt='Item image' 
+                    onClick={() => openItem(id)}
                 />
             </figure>
             <div className='item-info'>
-                {`season: ${item.season}`}<br></br> 
-                {`size: ${item.size}`}<br></br> 
-                {`price: $${item.price}`}
+                {`brand: ${brand}`}<br></br> 
+                {`size: ${size}`}<br></br> 
+                {`price: $${price}`}
             </div>
             <div className='item-actions'>
                 <Button 
                     bsSize="small" 
                     bsStyle="primary"
-                    disabled={ item.inStock === 0 } 
+                    disabled={ inStock === 0 } 
                     onClick={() => buyItem(item)}
                 >Buy</Button>
             </div>
         </div>
     )
-
 }
 
 ItemPreview.propTypes = {

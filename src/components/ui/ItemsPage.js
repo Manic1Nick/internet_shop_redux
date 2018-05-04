@@ -38,9 +38,13 @@ class ItemsPage extends Component {
         }
     }
 
-    onChangeFilter(addingFilter) {
+    addFilter(addingFilter) {
         let { filter } = this.state,
-            newFilter = Object.assign(filter, addingFilter)
+            newFilter = addingFilter
+
+        if (addingFilter.group) this.onOpenGroup(addingFilter.group)
+        else newFilter = Object.assign(filter, addingFilter)
+        
         this.updateFilter(newFilter)
     }
     
@@ -73,15 +77,14 @@ class ItemsPage extends Component {
 		this.props.history.push(`/checkout`)
 	}
 
-	onOpenGroup = () => {
+	onOpenGroup = (group) => {
         const { history, match } = this.props
-		history.push(`/${match.params.group}`)
+		history.push(`/${group}`)
 	}
 	
 	onOpenItem = (item) => {
         this.closeModalConfirmCheckout()
         
-        //const { filter } = this.state
         const { history, match } = this.props
         if (match.params.id) history.push(`${item.id}`)
         else history.push(`${match.url}/${item.id}`)
@@ -131,7 +134,7 @@ class ItemsPage extends Component {
                     filterKeys={ filterKeys }
                     groupItems={ groupItems }
                     filteredItems={ filteredItems } 
-                    updateFilter={ this.onChangeFilter.bind(this) } 
+                    addFilter={ this.addFilter.bind(this) } 
                     deleteFilter={ this.onDeleteFilter.bind(this) }
                     clearFiltersInGroup={ this.onClearFiltersInGroup.bind(this) } 
                 />

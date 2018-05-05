@@ -53,11 +53,7 @@ const webpackConfig = {
             path: outputPath
         }),
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        // new webpack.DefinePlugin({
-        //     'process.env.NODE_ENV': JSON.stringify('production')
-        // }),
-        // new webpack.optimize.UglifyJsPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
         contentBase: path.resolve(__dirname, './dist'),

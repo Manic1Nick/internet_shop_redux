@@ -2,12 +2,25 @@
 
 .Item {
 	.item-info {		
-		p:first-child { 
+		display: flex;
+		justify-content: space-between;
+
+		.item-keys-values,
+		.item-in-stock { 
 			margin-top: 1%; 
 
 			.btn-link {
 				padding: 2px 4px 4px 4px;
 			}
+
+			span {
+				margin-right: 10px;
+			}
+		}
+
+		img {
+			width: 80px;
+			height: auto;
 		}
 	}
 
@@ -28,5 +41,17 @@
 
 		display: flex;
 		justify-content: space-between;
+	}
+	
+	.item-actions {
+		.buy-item {
+			margin-top: 1%; 
+
+			img {
+				width: 20px;
+				height: auto;
+				margin-right: 5px;
+			}
+		}
 	}
 }

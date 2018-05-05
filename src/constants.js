@@ -18,3 +18,27 @@ export default keyMirror({
 	CLEAR_ERROR: null,
 	CLEAR_ALL_ERRORS: null
 })
+
+export const GroupIcons = {
+	"sandals": "icons/groups/sandals.png",
+	"t-shirts": "icons/groups/t-shirt.png", 
+	"shirts": "icons/groups/shirt.png",
+	"jeans": "icons/groups/jeans.png",
+	"outerwear": "icons/groups/women-long-coat.png"
+}
+
+export const MenuIcons = {
+	"about": "icons/menu/about.png",
+	"items": "icons/menu/items.png", 
+	"terms": "icons/menu/terms.png",
+	"contacts": "icons/menu/contacts.png",
+	"cart_empty": "icons/menu/cart_empty.png",
+	"cart_full": "icons/menu/cart_full.png"
+}
+
+export const ItemIcons = {
+	"buy": "icons/item/buy.png",
+	"price": "icons/item/price.png",
+	"sale": "icons/item/sale.png",
+	"sold": "icons/item/sold_color.png",
+}

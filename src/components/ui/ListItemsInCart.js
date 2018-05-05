@@ -41,6 +41,8 @@ const ListItemsInCart = (props) => {
 		<Table className='cart__table' responsive>
 			<thead>
 				<tr>
+					<th className="item__preview"></th>
+					<th className="item__group">Group</th>
 					<th className="item__name">Name</th>
 					<th className="item__price">Price</th>
 					<th className="item__quantity">Quantity</th>
@@ -53,10 +55,7 @@ const ListItemsInCart = (props) => {
 					itemsInCart.map((item, index) => 
 						<ItemCartView 
 							key={ index }
-							name={ item.name }
-							price={ item.price }
-							maxQuantity={ item.inStock + item.inCart }
-							quantity={ item.inCart }
+							item={ item }
 							onOpenItem={ () => openItem(item) }
 							onIncrItem={ () => checkIncrItem(item) }
 							onDecrItem={ () => checkDecrItem(item) }
@@ -66,9 +65,12 @@ const ListItemsInCart = (props) => {
 				}
 				<tr>
 					<td></td>
+					<td></td>
+					<td></td>
 					<td className="total__name">TOTAL:</td>
 					<td className="total__items">{ `${quantityCart} items` }</td>
 					<td className="total__summ">{ `$ ${summCart}` }</td>
+					<td></td>
 				</tr>
 			</tbody>
 		</Table>

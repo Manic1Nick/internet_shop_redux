@@ -1,6 +1,7 @@
 import { PropTypes } from 'prop-types'
 import { Route } from 'react-router-dom'
 import { Well, Badge } from 'react-bootstrap'
+import { GroupIcons as icons } from '../../constants'
 
 import '../../styles/ItemsGroupsPage.less'
 
@@ -24,6 +25,7 @@ const ItemsGroupsPage = ({ groups=[], itemsInStock=[], history }) => {
                         className='items-group' 
                         onClick={ () => selectGroup(group) }
                     >
+                        <p><img src={icons[group]} /></p>
                         <p>{ group } <Badge>{ quantityInGroup(group) }</Badge></p>
                     </Well>
                 )

@@ -7,19 +7,32 @@ import '../../styles/ItemCartView.less'
 const ItemCartView = (props) => {
 	
 	const {
-		name, 
-		price, 
-		quantity, 
-		maxQuantity, 
-		onOpenItem, 
-		onDecrItem, 
-		onIncrItem, 
-		onDeleteItem
+		item: {
+			preview, id, group, name, price, inStock, inCart
+		}, 
+		onOpenItem=f=>f, 
+		onDecrItem=f=>f, 
+		onIncrItem=f=>f, 
+		onDeleteItem=f=>f
 	} = props
+
+	const noItemsInCart = inCart === 0,
+		noItemsInStock = inCart === (inStock + inCart),
+		summItemInCart = (price * inCart)
 
 	return (
 		<tr className='ItemCartView'>
 
+			<td className='item__preview' 
+				onClick={ () => onOpenItem() }>
+				<img src={ preview } />
+			</td>
+
+			<td className='item__group' 
+				onClick={ () => onOpenItem() }>
+				{ group }
+			</td>
+			
 			<td className='item__name' 
 				onClick={ () => onOpenItem() }>
 				{ name }
@@ -32,21 +45,23 @@ const ItemCartView = (props) => {
 			<td className='item__quantity'>					
 				<Button
 					className='btn-decr' 
+					bsSize="small"
 					onClick={ () => onDecrItem() } 
-					disabled={ quantity === 0 }
+					disabled={ noItemsInCart }
 				>-</Button>	    			
 				{ 
-					quantity 
+					inCart 
 				}					
 				<Button
 					className='btn-incr' 
+					bsSize="xsmall"
 					onClick={ () => onIncrItem() } 
-					disabled={ quantity === maxQuantity }
+					disabled={ noItemsInStock }
 				>+</Button>	    			
 			</td>
 
 			<td className='item__summ'>
-				{ `$ ${price * quantity}` }
+				{ `$ ${summItemInCart}` }
 			</td>
 
 			<td className="btn-del" 

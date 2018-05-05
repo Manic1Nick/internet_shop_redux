@@ -1,17 +1,30 @@
 @import "../styles/palette.less";
 
 .ItemCartView {
-	.item__name {
+    //vertical-align: center;
+    
+	.item__preview, .item__group, .item__name {
         text-align: left; 
 		cursor: pointer;
-	}
+    }
+    
+    .item__preview {
+        img {
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            height: 80px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
 	
     .item__quantity {
         .btn-incr, .btn-decr {
             cursor: pointer;
             border: none;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
         }
     }
 

@@ -42,3 +42,12 @@ export const ItemIcons = {
 	"sale": "icons/item/sale.png",
 	"sold": "icons/item/sold_color.png",
 }
+
+export const CartIcons = {
+	"delete": "icons/cart/delete.png",
+	"clear": "icons/cart/clear.png",
+	"confirm": "icons/cart/confirm.png",
+	"send": "icons/cart/send.png",
+	"return": "icons/cart/return.png",
+	"bag_empty": "icons/cart/bag_empty.png"
+}

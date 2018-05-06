@@ -2,6 +2,8 @@ import { Component } from 'react'
 import classNames from 'classnames'
 import { ButtonGroup, Button } from 'react-bootstrap'
 
+import { CartIcons as icons } from '../../constants'
+
 import '../../styles/ItemCartView.less'
 
 const ItemCartView = (props) => {
@@ -23,29 +25,29 @@ const ItemCartView = (props) => {
 	return (
 		<tr className='ItemCartView'>
 
-			<td className='item__preview' 
+			<td className='item-data preview' 
 				onClick={ () => onOpenItem() }>
 				<img src={ preview } />
 			</td>
 
-			<td className='item__group' 
+			<td className='item-data group' 
 				onClick={ () => onOpenItem() }>
 				{ group }
 			</td>
 			
-			<td className='item__name' 
+			<td className='item-data name' 
 				onClick={ () => onOpenItem() }>
 				{ name }
 			</td>
 
-			<td className='item__price'>
+			<td className='item-data price'>
 				{ `$ ${price}` }
 			</td>
 
-			<td className='item__quantity'>					
+			<td className='item-data quantity'>					
 				<Button
 					className='btn-decr' 
-					bsSize="small"
+					bsSize="xsmall"
 					onClick={ () => onDecrItem() } 
 					disabled={ noItemsInCart }
 				>-</Button>	    			
@@ -60,13 +62,15 @@ const ItemCartView = (props) => {
 				>+</Button>	    			
 			</td>
 
-			<td className='item__summ'>
+			<td className='item-data summ'>
 				{ `$ ${summItemInCart}` }
 			</td>
 
-			<td className="btn-del" 
+			<td className='item-data delete'
 				onClick={ () => onDeleteItem() }
-			> x </td>
+			>
+				<img src={icons.delete} alt='Delete icon' />
+			</td>
 				
 		</tr>
 	)

@@ -13,6 +13,8 @@ import Terms from './ui/TermsPage'
 import Contacts from './ui/ContactsPage'
 import OrderConfirmationPage from './ui/OrderConfirmationPage'
 
+import '../styles/App.less'
+
 export const App = () =>
     <div className="App">
         <ShowErrors />

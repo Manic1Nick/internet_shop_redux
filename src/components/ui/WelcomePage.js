@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types'
 import { PageHeader } from 'react-bootstrap'
 import ItemsGroupsPage from '../containers/ItemsGroupsPage'
 
@@ -12,5 +13,9 @@ const WelcomePage = ({ history }) =>
         
         <ItemsGroupsPage history={ history } />
     </div>
+
+WelcomePage.propTypes = {
+    history: PropTypes.object
+}
 
 export default WelcomePage

@@ -44,6 +44,8 @@ CheckoutPage.propTypes = {
     history: PropTypes.object,
     orders: PropTypes.array,
     itemsInCart: PropTypes.array,
+    makeOrder: PropTypes.func,
+    updateItems: PropTypes.func,
     sending: PropTypes.bool
 }
 

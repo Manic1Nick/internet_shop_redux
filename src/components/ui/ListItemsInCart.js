@@ -1,5 +1,4 @@
 import { PropTypes } from 'prop-types'
-import { Component } from 'react'
 import { Table, Button, PageHeader } from 'react-bootstrap'
 
 import { calcTotalQuantity, calcTotalSumm } from '../../util/CartUtil'
@@ -75,6 +74,15 @@ const ListItemsInCart = (props) => {
 			</tbody>
 		</Table>
 	)	
+}
+
+ListItemsInCart.propTypes = {
+	itemsInCart: PropTypes.array, 
+	history: PropTypes.object, 
+	openItem: PropTypes.func,
+	incrItem: PropTypes.func, 
+	decrItem: PropTypes.func, 
+	deleteItem: PropTypes.func
 }
 
 export default ListItemsInCart

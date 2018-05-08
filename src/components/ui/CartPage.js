@@ -52,6 +52,7 @@ const CartPage = (props) => {
 
 			<div className="cart__buttons">
 				<Button
+					className='btn btn-clear-cart'
 	    			onClick={ () => onClearCart() }
 	    		>
 					<img src={icons.clear} alt='Clear icon' />
@@ -59,6 +60,7 @@ const CartPage = (props) => {
 				</Button>
 
 				<Button
+					className='btn btn-cart-to-checkout'
 	    			bsStyle="success" 
 	    			onClick={ () => history.push('/checkout') }
 	    			disabled={ quantityCart === 0 }

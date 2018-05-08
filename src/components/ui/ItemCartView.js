@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import { PropTypes } from 'prop-types'
 import classNames from 'classnames'
 import { ButtonGroup, Button } from 'react-bootstrap'
 
@@ -74,6 +74,14 @@ const ItemCartView = (props) => {
 				
 		</tr>
 	)
+}
+
+ItemCartView.propTypes = {
+    item: PropTypes.object,
+    onOpenItem: PropTypes.func,
+    onIncrItem: PropTypes.func,
+    onDecrItem: PropTypes.func,
+    onDeleteItem: PropTypes.func
 }
 
 export default ItemCartView

@@ -4,47 +4,40 @@ import { Well, Button, Carousel, Table } from 'react-bootstrap'
 import { ItemIcons as icons } from '../../constants'
 import '../../styles/Item.less'
 
-const Item = (props) => {
+const Item = ({ currentItem={}, buyItem=f=>f, updateFilter=f=>f, filterKeys={} }) => {
 
-    const { currentItem, buyItem, updateFilter, filterKeys } = props
+    const { id, group, inStock, pics } = currentItem  
 
-    const { 
-        id,
-        name, 
-        brand, 
-        season, 
-        group, 
-        condition, 
-        size, 
-        price, 
-        description, 
-        inStock, 
-        pics 
-    } = currentItem
+    const itemKeys = [ 'group', ...filterKeys[currentItem.group] ],
+        outOfStock = inStock === 0
 
     const onFilter = (filter) => {
         filter.group = group
         updateFilter(filter)
     }
 
-    //const styleEmptyStock = inStock === 0 ? { color: 'red' } : {}
-
-    const itemKeys = [ 'group', ...filterKeys[group] ]
-
-    const inStockInfo = inStock === 0 ? <img src={icons.sold} alt='Sold icon' /> : <p>in stock: {inStock}</p>
+    const inStockInfo = () => outOfStock 
+        ? <img src={icons.sold} alt='Sold icon' /> 
+        : <p>in stock: {inStock}</p>
 
     const buttonBuy = 
-        <div className='item-actions'>
-            <Button
-                bsStyle="primary"
-                className='btn buy-item'
-                onClick={ () => buyItem(currentItem) }
-                disabled={ inStock === 0 }
-            >
-                <img src={icons.buy} alt='Buy icon' />
-                Buy
-            </Button>
-        </div>
+        <Button
+            bsStyle='primary'
+            className='btn buy-item'
+            onClick={ () => buyItem(currentItem) }
+        >
+            <img src={icons.buy} alt='Buy icon' />
+            Buy
+        </Button>
+
+    const buttonSold = 
+        <Button
+            bsStyle='default'
+            className='btn buy-item'
+            disabled={ outOfStock }
+        >
+            Out of stock
+        </Button>
 
     return (
     
@@ -68,7 +61,7 @@ const Item = (props) => {
 
             <div className='item-info'>
                 <div className='item-keys-values'>
-                    <span> id: { id } </span>
+                    <span className='item-key-value'> id: { id } </span>
                     {
                         itemKeys.map((key, index) => 
                             <span className='item-key-value' key={index}>
@@ -80,10 +73,12 @@ const Item = (props) => {
                             </span>
                         )
                     }
-                    { buttonBuy }
+                    <div className='item-actions'>
+                        { outOfStock ? buttonSold : buttonBuy }                    
+                    </div>
                 </div>
 
-                <div className='item-in-stock'>{ inStockInfo }</div>
+                <div className='item-in-stock'>{ inStockInfo() }</div>
             </div>
 
 

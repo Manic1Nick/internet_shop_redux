@@ -44,7 +44,7 @@ class ItemsFilter extends Component {
         
         return(
             <SplitButton
-                className='btn btn-filters'
+                className='btn-filters'
                 bsStyle={buttonStyle}
                 title={buttonTitle}
                 key={i}
@@ -59,6 +59,7 @@ class ItemsFilter extends Component {
                         return(
                             <MenuItem
                                 key={index}
+                                className='btn-filters-values'
                                 eventKey={index}
                                 onSelect={ () => addFilter({ [filterName]: filterValue }) }
                                 //disabled={ isFilterValueDisabled }
@@ -70,6 +71,7 @@ class ItemsFilter extends Component {
 
                 <MenuItem divider />
                 <MenuItem 
+                    className='btn-filters-values'
                     eventKey='100' 
                     onSelect={ () => deleteFilter([filterName]) } 
                     disabled={ filterName === 'group' }
@@ -93,7 +95,7 @@ class ItemsFilter extends Component {
                 </ButtonToolbar>
 
                 <Button 
-                    className='btn btn-clear' 
+                    className='btn-clear' 
                     onClick={ () => clearFiltersInGroup() }
                 >see all in group</Button>
 

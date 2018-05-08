@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types'
 import { Well, Button, Pager } from 'react-bootstrap'
 
 import Item from './Item'
@@ -50,6 +51,17 @@ const ItemPage = (props) => {
             />
         </div>
     )
+}
+
+ItemPage.propTypes = {
+    currentItem: PropTypes.object, 
+    prevItem: PropTypes.object, 
+    nextItem: PropTypes.object, 
+    filterKeys: PropTypes.object, 
+    openItem: PropTypes.func, 
+    openGroup: PropTypes.func, 
+    updateFilter: PropTypes.func, 
+    buyItem: PropTypes.func
 }
 
 export default ItemPage

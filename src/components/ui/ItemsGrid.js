@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types'
 import { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { Well, Button } from 'react-bootstrap'
@@ -55,6 +56,12 @@ class ItemsGrid extends Component {
 			</div>
 		)
 	}
+}
+
+ItemsGrid.propTypes = {
+    items: PropTypes.array,
+    buyItem: PropTypes.func, 
+    openItem: PropTypes.func
 }
 
 export default ItemsGrid

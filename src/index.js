@@ -8,6 +8,7 @@ import { addError } from './actions'
 
 import { App, Whoops404 } from './components'
 import { HashRouter as Router, Route } from 'react-router-dom'
+import './styles/queries.scss'
 
 const initialState = (localStorage["store-internet-shop"]) 
 	? JSON.parse(localStorage["store-internet-shop"])

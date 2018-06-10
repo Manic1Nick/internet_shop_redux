@@ -88,16 +88,14 @@ class ItemsFilter extends Component {
 		return(
 			<div className='ItemsFilter'>
                 <ButtonToolbar className='filter-buttons'>
-                { 
-                    filterNames.map((filterName, i) => this.renderSplitButton(filterName, i))
-                }
+                    { 
+                        filterNames.map((filterName, i) => this.renderSplitButton(filterName, i))
+                    }
+                    <Button 
+                        className='btn-clear' 
+                        onClick={ () => clearFiltersInGroup() }
+                    >see all in group</Button>
                 </ButtonToolbar>
-
-                <Button 
-                    className='btn-clear' 
-                    onClick={ () => clearFiltersInGroup() }
-                >see all in group</Button>
-
 			</div>
 		)
     }

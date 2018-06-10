@@ -1,0 +1,71 @@
+
+/* Big tablets to 1200px (widths smaller than 1140px row) */
+@media only screen and (max-width: 1200px) {
+
+}
+
+/* Small tablets to big tablets from 768px to 1023px */
+@media only screen and (max-width: 1023px) {
+    
+}
+
+/* Small phones to small tablets from 481px to 767px */
+@media only screen and (max-width: 767px) {
+    
+}
+
+/* Small phones from 0px to 480px */
+@media only screen and (max-width: 480px) {
+    .App {
+        max-width: 480px;
+        font-size: 12px;
+
+        .Menu {
+            margin: 0;
+            
+            .menu-link {
+                font-size: 80%;
+            }
+
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .dropdown button { 
+                    padding: 0;
+                    border: none;
+                    background: none;
+                }
+
+                .navbar-nav {
+                    margin: 0;
+                }
+            }
+        }
+
+        .ItemsGrid .ItemsFilter {
+            .btn, li { font-size: 12px; }
+            .btn-clear { height: 28px; }            
+        }
+
+        .ItemPreview {
+            width: 150px;
+        }
+
+        .ItemsPage { 
+            .btn { font-size: 10px; } 
+            .item-keys-values { margin-right: 5px; }
+            .item-in-stock img { width: 30px; }
+        }
+
+        .Cart .btn { font-size: 10px; }
+    } 
+
+    .ModalConfirmCheckout, 
+    .ModalConfirmCheckout .btn {
+        font-size: 12px;
+    }
+
+
+}

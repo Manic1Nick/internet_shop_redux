@@ -9,13 +9,14 @@ import '../../styles/ItemsGrid.less'
 class ItemsGrid extends Component {
 
 	componentDidMount() {
-		let grid = this.refs.grid
+		let grid = this.refs.grid,
+			width = window.innerWidth
 
 		imagesLoaded( grid, () => {
 			// init Isotope after all images have loaded
 			this.msnry = new Masonry( grid, {
 				itemSelector: '.ItemPreview',
-				columnWidth: 200,
+				columnWidth: width > 480 ? 200 : 150,
 				gutter: 10,
 				isFitWidth: true
 			})

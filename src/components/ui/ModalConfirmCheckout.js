@@ -22,6 +22,7 @@ const ModalConfirmCheckout = (props) => {
 
         <Modal
             //{...this.props}
+            className='ModalConfirmCheckout'
             bsSize="large"
             show={ open }
             onHide={ () => closeModal() }

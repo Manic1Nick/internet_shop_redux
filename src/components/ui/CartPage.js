@@ -3,7 +3,7 @@ import { Table, Button, PageHeader } from 'react-bootstrap'
 
 import { calcTotalQuantity } from '../../util/CartUtil'
 import ListItemsInCart from './ListItemsInCart'
-import { CartIcons as icons } from '../../constants'
+import { CART_ICONS as ICONS } from '../../constants'
 
 import '../../styles/Cart.less'
 
@@ -21,7 +21,7 @@ const CartPage = (props) => {
 	if (itemsInCart.length === 0) {
 		return (
 			<PageHeader className='Cart__empty'>
-				<img src={icons.bag_empty} alt='Empty bag icon' />
+				<img src={ICONS.bag_empty} alt='Empty bag icon' />
 				<p>Your cart is empty... :(</p>
 			</PageHeader>
 		)
@@ -55,7 +55,7 @@ const CartPage = (props) => {
 					className='btn btn-clear-cart'
 	    			onClick={ () => onClearCart() }
 	    		>
-					<img src={icons.clear} alt='Clear icon' />
+					<img src={ICONS.clear} alt='Clear icon' />
 					Clear cart
 				</Button>
 
@@ -65,7 +65,7 @@ const CartPage = (props) => {
 	    			onClick={ () => history.push('/checkout') }
 	    			disabled={ quantityCart === 0 }
 	    		>
-					<img src={icons.confirm} alt='Confirm icon' />
+					<img src={ICONS.confirm} alt='Confirm icon' />
 					Proceed to checkout
 				</Button>
 	  		</div>

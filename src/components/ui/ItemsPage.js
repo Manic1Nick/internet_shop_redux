@@ -100,7 +100,7 @@ class ItemsPage extends Component {
 
 	renderItem = () => {
         const { filteredItems } = this.state,
-            { itemsInCart, itemsInStock, filterKeys, match } = this.props
+            { itemsInCart, itemsInStock, match } = this.props
         
         let itemsOnPage = filteredItems.length > 0 ? filteredItems : itemsInCart.length > 0 ? itemsInCart : itemsInStock,
             currentItem = itemsOnPage.find(item => item.id === parseInt(match.params.id)),   
@@ -112,7 +112,6 @@ class ItemsPage extends Component {
                 currentItem={ currentItem }
                 prevItem={ prevItem }
                 nextItem={ nextItem }
-                filterKeys={ filterKeys }
                 openItem={ this.onOpenItem }
                 openGroup={ this.onOpenGroup }
                 updateFilter={ this.updateFilter.bind(this) }
@@ -124,14 +123,13 @@ class ItemsPage extends Component {
 	renderItemsGrid = () => {
         const 
             { filter, filteredItems } = this.state,
-            { itemsInStock=[], filterKeys={} } = this.props,
+            { itemsInStock=[] } = this.props,
             groupItems = itemsInStock.filter(item => item.group === filter.group)
 
         return(
             <div className='ItemsGrid'>
                 <ItemsFilter 
                     activeFilter={ filter }
-                    filterKeys={ filterKeys }
                     groupItems={ groupItems }
                     filteredItems={ filteredItems } 
                     addFilter={ this.addFilter.bind(this) } 
@@ -192,7 +190,6 @@ class ItemsPage extends Component {
 }
 
 ItemsPage.propTypes = {
-    filterKeys: PropTypes.object,
     intemsInStock: PropTypes.array,
     intemsInCart: PropTypes.array,
     history: PropTypes.object,

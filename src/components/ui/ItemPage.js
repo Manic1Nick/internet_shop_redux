@@ -11,7 +11,6 @@ const ItemPage = (props) => {
         currentItem={}, 
         prevItem, 
         nextItem, 
-        filterKeys={}, 
         openItem=f=>f, 
         openGroup=f=>f, 
         updateFilter=f=>f, 
@@ -45,7 +44,6 @@ const ItemPage = (props) => {
 
             <Item 
                 currentItem={ currentItem } 
-                filterKeys={ filterKeys }
                 buyItem={ buyItem } 
                 updateFilter={ updateFilter }
             />
@@ -57,7 +55,6 @@ ItemPage.propTypes = {
     currentItem: PropTypes.object, 
     prevItem: PropTypes.object, 
     nextItem: PropTypes.object, 
-    filterKeys: PropTypes.object, 
     openItem: PropTypes.func, 
     openGroup: PropTypes.func, 
     updateFilter: PropTypes.func, 

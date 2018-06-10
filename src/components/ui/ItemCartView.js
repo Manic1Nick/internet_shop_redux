@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import classNames from 'classnames'
 import { ButtonGroup, Button } from 'react-bootstrap'
 
-import { CartIcons as icons } from '../../constants'
+import { CART_ICONS as ICONS } from '../../constants'
 
 import '../../styles/ItemCartView.less'
 
@@ -69,7 +69,7 @@ const ItemCartView = (props) => {
 			<td className='item-data delete'
 				onClick={ () => onDeleteItem() }
 			>
-				<img src={icons.delete} alt='Delete icon' />
+				<img src={ICONS.delete} alt='Delete icon' />
 			</td>
 				
 		</tr>

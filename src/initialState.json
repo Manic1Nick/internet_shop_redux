@@ -641,13 +641,5 @@
 	],
 	"cart": [],
 	"errors": [],
-	"filterKeys": {
-		"sandals": [ "brand", "season", "size", "price" ],
-		"t-shirts": [ "brand", "size", "price" ], 
-		"shirts": [ "brand", "size", "price" ],
-		"jeans": [ "brand", "color", "size", "price" ],
-		"outerwear": [ "brand", "kind", "season", "size", "price" ]
-	},
-	"sendingService": false,
 	"orders": []
 }

@@ -29,8 +29,7 @@ class ItemsFilter extends Component {
     }
 
     renderSplitButton(filterName, i) {
-        const { 
-            filterKeys={},
+        const {
             groupItems=[],
             filteredItems=[],
             addFilter=f=>f, 
@@ -38,7 +37,7 @@ class ItemsFilter extends Component {
         } = this.props
 
         const { activeFilter } = this.state,
-            filterValues = genFilterButtonValues(filterName, activeFilter, filterKeys, groupItems, filteredItems),
+            filterValues = genFilterButtonValues(filterName, activeFilter, groupItems, filteredItems),
             buttonTitle = genTitleButton(filterName, activeFilter, filteredItems),
             buttonStyle = genStyleTitleButton(filterName, activeFilter)
         
@@ -82,13 +81,13 @@ class ItemsFilter extends Component {
     }
 
 	render() {
-        const { filterKeys, clearFiltersInGroup } = this.props,
+        const { clearFiltersInGroup } = this.props,
             { activeFilter } = this.state,
-            filterNames = genFilterNames(filterKeys, activeFilter)
+            filterNames = genFilterNames(activeFilter)
 
 		return(
 			<div className='ItemsFilter'>
-                <ButtonToolbar>
+                <ButtonToolbar className='filter-buttons'>
                 { 
                     filterNames.map((filterName, i) => this.renderSplitButton(filterName, i))
                 }
@@ -105,7 +104,6 @@ class ItemsFilter extends Component {
 }
 
 ItemsFilter.propTypes = {
-    filterKeys: PropTypes.object,
     filteredItems: PropTypes.array,
     groupItems: PropTypes.array,
     addFilter: PropTypes.func, 

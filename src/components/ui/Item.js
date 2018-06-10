@@ -1,14 +1,18 @@
 import { PropTypes } from 'prop-types'
 import { Well, Button, Carousel, Table } from 'react-bootstrap'
 
-import { ItemIcons as icons } from '../../constants'
+import { 
+    ITEM_ICONS as ICONS, 
+    FILTER_KEYS as FILTERS 
+} from '../../constants'
+
 import '../../styles/Item.less'
 
-const Item = ({ currentItem={}, buyItem=f=>f, updateFilter=f=>f, filterKeys={} }) => {
+const Item = ({ currentItem={}, buyItem=f=>f, updateFilter=f=>f }) => {
 
     const { id, group, inStock, pics } = currentItem  
 
-    const itemKeys = [ 'group', ...filterKeys[currentItem.group] ],
+    const itemKeys = [ 'group', ...FILTERS[currentItem.group] ],
         outOfStock = inStock === 0
 
     const onFilter = (filter) => {
@@ -17,7 +21,7 @@ const Item = ({ currentItem={}, buyItem=f=>f, updateFilter=f=>f, filterKeys={} }
     }
 
     const inStockInfo = () => outOfStock 
-        ? <img src={icons.sold} alt='Sold icon' /> 
+        ? <img src={ICONS.sold} alt='Sold icon' /> 
         : <p>in stock: {inStock}</p>
 
     const buttonBuy = 
@@ -26,7 +30,7 @@ const Item = ({ currentItem={}, buyItem=f=>f, updateFilter=f=>f, filterKeys={} }
             className='btn buy-item'
             onClick={ () => buyItem(currentItem) }
         >
-            <img src={icons.buy} alt='Buy icon' />
+            <img src={ICONS.buy} alt='Buy icon' />
             Buy
         </Button>
 
@@ -88,7 +92,6 @@ const Item = ({ currentItem={}, buyItem=f=>f, updateFilter=f=>f, filterKeys={} }
 
 Item.propTypes = {
     currentItem: PropTypes.object,
-    filterKeys: PropTypes.object,
     buyItem: PropTypes.func,
     updateFilter: PropTypes.func
 }

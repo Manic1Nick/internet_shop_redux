@@ -9,17 +9,17 @@ import { addError } from './actions'
 import { App, Whoops404 } from './components'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
-const initialState = (localStorage["redux-store"]) 
-	? JSON.parse(localStorage["redux-store"])
-    : dataState
+const initialState = (localStorage["store-internet-shop"]) 
+	? JSON.parse(localStorage["store-internet-shop"])
+	: dataState
+	
+initialState.sendingService = false
 
 const saveState = () => 
-    localStorage["redux-store"] = JSON.stringify(store.getState())
+    localStorage["store-internet-shop"] = JSON.stringify(store.getState())
 
 const handleError = error => {
-	store.dispatch(
-		addError(error.message)
-	)
+	store.dispatch( addError(error.message) )
 }
 
 const store = storeFactory(initialState)

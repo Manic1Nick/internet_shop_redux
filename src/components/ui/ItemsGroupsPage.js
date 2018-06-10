@@ -1,11 +1,12 @@
 import { PropTypes } from 'prop-types'
 import { Route } from 'react-router-dom'
 import { Well, Badge } from 'react-bootstrap'
-import { GroupIcons as icons } from '../../constants'
+import { GROUP_ICONS as ICONS } from '../../constants'
+import { FILTER_KEYS } from '../../constants'
 
 import '../../styles/ItemsGroupsPage.less'
 
-const ItemsGroupsPage = ({ groups=[], itemsInStock=[], history }) => {
+const ItemsGroupsPage = ({ itemsInStock=[], history }) => {
 
     const selectGroup = (group) => {
         history.push(`/${group}`)
@@ -16,16 +17,18 @@ const ItemsGroupsPage = ({ groups=[], itemsInStock=[], history }) => {
         return itemsInGroup.length
     }
 
+    const GROUPS = Object.keys(FILTER_KEYS)
+
 	return (
 		<div className='ItemsGroupsPage'>
 			{
-                groups.map((group, index) =>
+                GROUPS.map((group, index) =>
                     <Well 
                         key={ index } 
                         className='items-group' 
                         onClick={ () => selectGroup(group) }
                     >
-                        <p><img src={icons[group]} /></p>
+                        <p><img src={ICONS[group]} /></p>
                         <p>{ group } <Badge>{ quantityInGroup(group) }</Badge></p>
                     </Well>
                 )
@@ -35,7 +38,6 @@ const ItemsGroupsPage = ({ groups=[], itemsInStock=[], history }) => {
 }
 
 ItemsGroupsPage.propTypes = {
-    groups: PropTypes.array,
     itemsInStock: PropTypes.array,
     history: PropTypes.object
 }

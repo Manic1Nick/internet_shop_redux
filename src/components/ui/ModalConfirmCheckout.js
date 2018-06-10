@@ -45,6 +45,12 @@ const ModalConfirmCheckout = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button 
+                    className="btn-delete"
+                    bsStyle="danger"
+                    onClick={ () => deleteItem(itemsInCart[itemsInCart.length - 1]) }
+                >Delete last item</Button>
+
+                <Button 
                     className="btn-checkout"
                     bsStyle="success" 
                     onClick={ () => onCheckout() }

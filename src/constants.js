@@ -19,7 +19,15 @@ export default keyMirror({
 	CLEAR_ALL_ERRORS: null
 })
 
-export const GroupIcons = {
+export const FILTER_KEYS = {
+		"sandals": [ "brand", "season", "size", "price" ],
+		"t-shirts": [ "brand", "size", "price" ], 
+		"shirts": [ "brand", "size", "price" ],
+		"jeans": [ "brand", "color", "size", "price" ],
+		"outerwear": [ "brand", "kind", "season", "size", "price" ]
+	}
+
+export const GROUP_ICONS = {
 	"sandals": "icons/groups/sandals.png",
 	"t-shirts": "icons/groups/t-shirt.png", 
 	"shirts": "icons/groups/shirt.png",
@@ -27,7 +35,7 @@ export const GroupIcons = {
 	"outerwear": "icons/groups/women-long-coat.png"
 }
 
-export const MenuIcons = {
+export const MENU_ICONS = {
 	"about": "icons/menu/about.png",
 	"items": "icons/menu/items.png", 
 	"terms": "icons/menu/terms.png",
@@ -36,14 +44,14 @@ export const MenuIcons = {
 	"cart_full": "icons/menu/cart_full.png"
 }
 
-export const ItemIcons = {
+export const ITEM_ICONS = {
 	"buy": "icons/item/buy.png",
 	"price": "icons/item/price.png",
 	"sale": "icons/item/sale.png",
 	"sold": "icons/item/sold_color.png",
 }
 
-export const CartIcons = {
+export const CART_ICONS = {
 	"delete": "icons/cart/delete.png",
 	"clear": "icons/cart/clear.png",
 	"confirm": "icons/cart/confirm.png",

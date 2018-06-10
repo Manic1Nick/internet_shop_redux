@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
     return {
-        groups: Object.keys(state.filterKeys),
         itemsInStock: state.stock
     }
 }

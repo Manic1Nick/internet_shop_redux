@@ -1,3 +1,5 @@
+import { FILTER_KEYS as FILTERS } from '../constants'
+
 export function filterItems(items, filter) {
     if (!filter || Object.keys(filter).length === 0) return items
     
@@ -35,10 +37,10 @@ export function validateValue(items, filter={}) {
     return result
 }
 
-export function genFilterNames(filterKeys, activeFilter) {
+export function genFilterNames(activeFilter) {
     const { group } = activeFilter
     
-    return [ 'group', ...filterKeys[group] ]
+    return [ 'group', ...FILTERS[group] ]
 }
 
 export function genTitleButton(buttonName, activeFilter, filteredItems) {
@@ -64,13 +66,13 @@ export function genStyleTitleButton(buttonName, activeFilter) {
     return styleButton
 }
 
-export function genFilterButtonValues(filterName, activeFilter, filterKeys, groupItems, filteredItems) {
+export function genFilterButtonValues(filterName, activeFilter, groupItems, filteredItems) {
     let isFilterGroupButton = filterName === 'group',
     isFilterButtonActive = activeFilter[filterName],
     filterButtonValues = []
     
     if (isFilterGroupButton) {
-        filterButtonValues = Object.keys(filterKeys)
+        filterButtonValues = Object.keys(FILTERS)
         
     } else if (isFilterButtonActive) {
         filterButtonValues = getItemValues(groupItems, filterName)
@@ -91,9 +93,9 @@ export function isButtonValueDisabled(buttonName, buttonValue, activeFilter, fil
     return !isLastActiveButton && !isFilterGroupButton && !isValueSelectalable
 }
 
-export function genFilterData(filterKeys, activeFilter, groupItems) {
-    let filterData = { group: Object.keys(filterKeys) },
-        groupKeys = filterKeys[activeFilter.group],
+export function genFilterData(activeFilter, groupItems) {
+    let filterData = { group: Object.keys(FILTERS) },
+        groupKeys = FILTERS[activeFilter.group],
         groupValues = []
 
     groupKeys.forEach(groupKey => {

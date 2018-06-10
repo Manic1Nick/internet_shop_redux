@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
 import { Navbar, Nav, NavItem, Badge } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import { MenuIcons as icons } from '../../constants'
+import { MENU_ICONS as ICONS } from '../../constants'
 
 import '../../styles/Menu.less'
 
@@ -15,13 +15,13 @@ const Menu = ({ itemsInCart=[] }) => {
 
     const cartEmpty = 
         <div>
-            <img src={icons.cart_empty} alt='Cart empty icon' />
+            <img src={ICONS.cart_empty} alt='Cart empty icon' />
             Cart
         </div>
 
     const cartFull = 
         <div>
-            <img src={icons.cart_full} alt='Cart full icon' />
+            <img src={ICONS.cart_full} alt='Cart full icon' />
             Cart
             <Badge className='cart__badge'>{ quantityItems }</Badge>
         </div>
@@ -31,25 +31,25 @@ const Menu = ({ itemsInCart=[] }) => {
       	  	  	<Nav className='menu-links'>
                     <LinkContainer to="/about">
                         <NavItem className='menu-link'>
-                            <img src={icons.about} alt='About icon' />
+                            <img src={ICONS.about} alt='About icon' />
                             About
                         </NavItem>
                     </LinkContainer>
                     <LinkContainer to="/items">
                         <NavItem className='menu-link'>
-                            <img src={icons.items} alt='Items icon' />
+                            <img src={ICONS.items} alt='Items icon' />
                             Items
                         </NavItem>
                     </LinkContainer>
                     <LinkContainer to="/terms">
                         <NavItem className='menu-link'>
-                            <img src={icons.terms} alt='Terms icon' />
+                            <img src={ICONS.terms} alt='Terms icon' />
                             Terms
                         </NavItem>
                     </LinkContainer>
                     <LinkContainer to="/contacts">
                         <NavItem className='menu-link'>
-                            <img src={icons.contacts} alt='Contacts icon' />
+                            <img src={ICONS.contacts} alt='Contacts icon' />
                             Contacts
                         </NavItem>
                     </LinkContainer>

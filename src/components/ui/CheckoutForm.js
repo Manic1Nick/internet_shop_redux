@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import { Component } from 'react'
 import { FormGroup, ControlLabel, FormControl, HelpBlock, Button, ButtonToolbar } from 'react-bootstrap'
 
-import { CartIcons as icons } from '../../constants'
+import { CART_ICONS as ICONS } from '../../constants'
 
 class CheckoutForm extends Component {
 
@@ -116,7 +116,7 @@ class CheckoutForm extends Component {
                     <Button
                         onClick={ this.onCancelForm }
                     >
-                        <img src={icons.return} alt='Return icon' />
+                        <img src={ICONS.return} alt='Return icon' />
                         Cancel
                     </Button> 
 
@@ -126,7 +126,7 @@ class CheckoutForm extends Component {
                         type="submit" 
                         disabled={ !this._validateFields() }
                     >
-                        <img src={icons.send} alt='Send icon' />
+                        <img src={ICONS.send} alt='Send icon' />
                         { textBtnSend }
                     </Button>   
 

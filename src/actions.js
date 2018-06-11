@@ -102,3 +102,8 @@ export const clearError = index => ({
 export const clearAllErrors = () => ({
     type: C.CLEAR_ALL_ERRORS
 })
+
+export const screenResize = size => ({
+    type: C.SCREEN_RESIZE,
+    screenSize: size
+})

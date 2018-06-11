@@ -8,30 +8,25 @@ import '../../styles/ItemsGrid.less'
 
 class ItemsGrid extends Component {
 
-	componentDidMount() {
-		let grid = this.refs.grid,
-			width = window.innerWidth
+	constructor(props) {
+		super()
+		this.state = ({ screenSize: props.screenSize })
+	}
 
-		imagesLoaded( grid, () => {
-			// init Isotope after all images have loaded
-			this.msnry = new Masonry( grid, {
-				itemSelector: '.ItemPreview',
-				columnWidth: width > 480 ? 200 : 150,
-				gutter: 10,
-				isFitWidth: true
-			})
-			this.msnry.layout()
-		})
+	componentDidMount() {
+		this._msnryLayout()
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.screenSize !== this.props.screenSize) {
+			this.setState({ screenSize: nextProps.screenSize })
+			this._msnryLayout()
+		}
 	}
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.items !== this.props.items) {
-			let grid = this.refs.grid
-			
-			imagesLoaded( grid, () => {
-				this.msnry.reloadItems()
-				this.msnry.layout()
-			})
+			this._msnryLayout()
 		}
 	}
 	
@@ -57,10 +52,26 @@ class ItemsGrid extends Component {
 			</div>
 		)
 	}
+
+	_msnryLayout() {
+		let grid = this.refs.grid,
+			{ screenSize } = this.state	
+			
+		imagesLoaded( grid, () => {
+			this.msnry = new Masonry( grid, {
+				itemSelector: '.ItemPreview',
+				columnWidth: screenSize === 'XS' ? 150 : 200,
+				gutter: 10,
+				isFitWidth: true
+			})
+			this.msnry.layout()
+		})
+	}
 }
 
 ItemsGrid.propTypes = {
-    items: PropTypes.array,
+	items: PropTypes.array,
+	screenSize: PropTypes.string,
     buyItem: PropTypes.func, 
     openItem: PropTypes.func
 }

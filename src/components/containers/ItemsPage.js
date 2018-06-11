@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     	itemsInStock: state.stock,
 		itemsInCart: state.cart,
 		history: ownProps.history,
-		match: ownProps.match
+		match: ownProps.match,
+		screenSize: state.screenSize
     }
 }
 

@@ -11,7 +11,32 @@
 
 /* Small phones to small tablets from 481px to 767px */
 @media only screen and (max-width: 767px) {
-    
+    .App {
+        max-width: 767px;
+
+        .Menu {
+            margin: 0;
+
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .dropdown button { 
+                    padding: 0;
+                    border: none;
+                    background: none;
+                }
+
+                .navbar-nav {
+                    margin: 0;
+                }
+            }
+        }
+        .ItemsPage { 
+            .item-keys-values { margin-right: 5px; }
+        }
+    } 
 }
 
 /* Small phones from 0px to 480px */
@@ -44,9 +69,17 @@
             }
         }
 
+        .ItemsGroupsPage .items-group {
+            width: 120px;
+            height: 140px;
+
+            img { width: 50px; }
+            p { font-size: 14px; }
+        }
+
         .ItemsGrid .ItemsFilter {
             .btn, li { font-size: 12px; }
-            .btn-clear { height: 28px; }            
+            .btn-clear { height: 31px; }            
         }
 
         .ItemPreview {
@@ -60,12 +93,14 @@
         }
 
         .Cart .btn { font-size: 10px; }
+        .Cart__empty { 
+            img { width: 80px; }
+            p { font-size: 14px; }
+        }
     } 
 
     .ModalConfirmCheckout, 
     .ModalConfirmCheckout .btn {
         font-size: 12px;
     }
-
-
 }

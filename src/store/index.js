@@ -16,7 +16,7 @@ const consoleMessages = store => next => action => {
 	console.groupCollapsed(`dispatching action => ${action.type}`)
 	result = next(action)
 
-	let { stock, cart, filters, errors, orders } = store.getState()
+	let { stock, cart, filters, errors, orders, screenSize } = store.getState()
 
 	console.log(`
 
@@ -24,7 +24,8 @@ const consoleMessages = store => next => action => {
 		stock in cart: ${cart.map(item => `${item.name}=${item.inStock}`)}
 		cart: ${cart.map(item => `${item.name}=${item.inCart}`)}
 		errors: ${errors.length},
-		orders: ${orders}
+		orders: ${orders},
+		screenSize: ${screenSize}
 
 	`)
 

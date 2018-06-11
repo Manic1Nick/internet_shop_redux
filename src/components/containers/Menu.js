@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 
 const mapStateToProps = (state) => {
     return {
-        itemsInCart: state.cart
+        itemsInCart: state.cart,
+        screenSize: state.screenSize
     }
 }
 

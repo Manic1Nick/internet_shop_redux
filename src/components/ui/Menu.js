@@ -6,7 +6,7 @@ import { MENU_ICONS as ICONS } from '../../constants'
 
 import '../../styles/Menu.less'
 
-const Menu = ({ itemsInCart=[] }) => {
+const Menu = ({ itemsInCart=[], screenSize='' }) => {
 
     let quantityItems = 0
     itemsInCart.forEach(item => {
@@ -59,6 +59,7 @@ const Menu = ({ itemsInCart=[] }) => {
             className='menu-button'
             title='Menu'
             id='dropdown-basic'
+            bsSize={ screenSize === 'S' ? 'large' : 'small' }
         >
             <LinkContainer to="/about">
                 <MenuItem className='menu-link'>
@@ -93,7 +94,7 @@ const Menu = ({ itemsInCart=[] }) => {
     return (
     	<Navbar className='Menu' collapseOnSelect>
             { 
-                window.innerWidth > 480 ? menuLinks : menuButton 
+                screenSize === 'M' ? menuLinks : menuButton 
             }
             <Nav pullRight>
                 <LinkContainer to="/cart">
@@ -109,7 +110,8 @@ const Menu = ({ itemsInCart=[] }) => {
 }
 
 Menu.propTypes = {
-    itemsInCart: PropTypes.array
+    itemsInCart: PropTypes.array,
+    screenSize: PropTypes.string
 }
 
 export default Menu

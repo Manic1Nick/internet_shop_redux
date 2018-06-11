@@ -64,7 +64,7 @@ class ItemsPage extends Component {
             filteredItems = filterItems(itemsInStock, filter)
         
         this.setState({ filter, filteredItems })
-        this.onOpenGroup()
+        //this.onOpenGroup()
     }
 	
 	onBuyItem = (item) => { 
@@ -123,7 +123,7 @@ class ItemsPage extends Component {
 	renderItemsGrid = () => {
         const 
             { filter, filteredItems } = this.state,
-            { itemsInStock=[] } = this.props,
+            { itemsInStock=[], screenSize=0 } = this.props,
             groupItems = itemsInStock.filter(item => item.group === filter.group)
 
         return(
@@ -141,6 +141,7 @@ class ItemsPage extends Component {
                 ?
                     <ItemsGrid 
                         items={ filteredItems } 
+                        screenSize={ screenSize }
                         buyItem={ this.onBuyItem } 
                         openItem={ this.onOpenItem }
                     />				

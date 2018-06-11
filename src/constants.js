@@ -16,7 +16,9 @@ export default keyMirror({
 
 	ADD_ERROR: null,
 	CLEAR_ERROR: null,
-	CLEAR_ALL_ERRORS: null
+	CLEAR_ALL_ERRORS: null,
+
+	SCREEN_RESIZE: null
 })
 
 export const FILTER_KEYS = {

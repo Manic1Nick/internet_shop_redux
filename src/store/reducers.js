@@ -113,11 +113,23 @@ export const errors = (state = [], action) => {
 	}	
 }
 
+export const screenSize = (state='', action) => {
+
+	switch (action.type) {
+		case C.SCREEN_RESIZE:
+			return action.screenSize
+
+		default:
+			return state
+	}
+}
+
 export default combineReducers({
 	cart,
 	stock,
 	errors,
 	filterKeys,
 	sendingService,
-	orders
+	orders,
+	screenSize
 })

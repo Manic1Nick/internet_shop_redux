@@ -69,7 +69,7 @@ const Item = ({ currentItem={}, buyItem=f=>f, updateFilter=f=>f }) => {
                     {
                         itemKeys.map((key, index) => 
                             <span className='item-key-value' key={index}>
-                                { key } : 
+                                { key }: 
                                     <Button 
                                         bsStyle="link"
                                         onClick={ () => onFilter({ [key]: currentItem[key] }) }

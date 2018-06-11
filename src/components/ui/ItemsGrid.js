@@ -24,7 +24,7 @@ class ItemsGrid extends Component {
 		}
 	}
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps, prevState) {
 		if (prevProps.items !== this.props.items) {
 			this._msnryLayout()
 		}

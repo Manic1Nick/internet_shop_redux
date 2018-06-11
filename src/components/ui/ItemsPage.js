@@ -64,7 +64,7 @@ class ItemsPage extends Component {
             filteredItems = filterItems(itemsInStock, filter)
         
         this.setState({ filter, filteredItems })
-        //this.onOpenGroup()
+        this.onOpenGroup(filter.group)
     }
 	
 	onBuyItem = (item) => { 
@@ -79,7 +79,10 @@ class ItemsPage extends Component {
 
 	onOpenGroup = (group) => {
         const { history, match } = this.props
-		history.push(`/${group}`)
+
+        if (!match.url.endsWith(group)) {
+            history.push(`/${group}`)
+        }
 	}
 	
 	onOpenItem = (item) => {
